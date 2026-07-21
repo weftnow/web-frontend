@@ -2,6 +2,7 @@ import { WeaveCanvas } from "@/components/ui/WeaveCanvas";
 import { Nav } from "@/components/sections/Nav";
 import { Hero } from "@/components/sections/Hero";
 import { Problem } from "@/components/sections/Problem";
+import { Turn } from "@/components/sections/Turn";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
           <Hero />
         </div>
         <Problem />
+        <Turn />
       </main>
     </>
   );
