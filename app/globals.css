@@ -1,26 +1,54 @@
 @import "tailwindcss";
 
+@theme {
+  --color-ember: #F4511E;
+  --color-ink: #121212;
+  --color-paper: #FFFFFF;
+  --color-bone: #F7F5F2;
+  --color-signal: #0090DE;
+  --color-ash: #B4B0AA;
+
+  --font-display: var(--font-comfortaa), system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: var(--color-paper);
+  --foreground: var(--color-ink);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-display);
+  overflow-x: hidden;
+}
+
+/* Heading rhythm from the Zolo reference */
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.05em;
+  line-height: 1.14;
+}
+
+.font-meta {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
