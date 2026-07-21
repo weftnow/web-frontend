@@ -4,6 +4,7 @@ import { Hero } from "@/components/sections/Hero";
 import { Problem } from "@/components/sections/Problem";
 import { Turn } from "@/components/sections/Turn";
 import { HowItWorks } from "@/components/sections/HowItWorks";
+import { Reveal } from "@/components/sections/Reveal";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
         <Problem />
         <Turn />
         <HowItWorks />
+        <Reveal />
       </main>
     </>
   );
