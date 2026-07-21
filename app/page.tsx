@@ -6,6 +6,8 @@ import { Turn } from "@/components/sections/Turn";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { Reveal } from "@/components/sections/Reveal";
 import { Testimonials } from "@/components/sections/Testimonials";
+import { Faq } from "@/components/sections/Faq";
+import { Contact } from "@/components/sections/Contact";
 
 export default function Home() {
   return (
@@ -21,6 +23,8 @@ export default function Home() {
         <HowItWorks />
         <Reveal />
         <Testimonials />
+        <Faq />
+        <Contact />
       </main>
     </>
   );
