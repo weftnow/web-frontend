@@ -5,6 +5,7 @@ import { Problem } from "@/components/sections/Problem";
 import { Turn } from "@/components/sections/Turn";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { Reveal } from "@/components/sections/Reveal";
+import { Testimonials } from "@/components/sections/Testimonials";
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
         <Turn />
         <HowItWorks />
         <Reveal />
+        <Testimonials />
       </main>
     </>
   );
