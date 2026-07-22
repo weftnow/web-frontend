@@ -5,7 +5,6 @@ import { content } from "@/content";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { MediaPlaceholder } from "@/components/ui/MediaPlaceholder";
 import { PremiumButton } from "@/components/ui/PremiumButton";
-import { SectionHeading } from "@/components/ui/SectionHeading";
 
 const railClasses = [
   "hero-media-card hero-media-card--one",
@@ -15,22 +14,48 @@ const railClasses = [
   "hero-media-card hero-media-card--five",
 ] as const;
 
-function GoogleWordmark() {
-  return (
-    <span aria-label="Google" className="font-display text-lg font-bold tracking-tight">
-      <span style={{ color: "#4285F4" }}>G</span>
-      <span style={{ color: "#EA4335" }}>o</span>
-      <span style={{ color: "#FBBC05" }}>o</span>
-      <span style={{ color: "#4285F4" }}>g</span>
-      <span style={{ color: "#34A853" }}>l</span>
-      <span style={{ color: "#EA4335" }}>e</span>
-    </span>
+const wordRevealDelay = 0.28;
+const characterRevealStagger = 0.035;
+const characterRevealDuration = 0.16;
+const heroEase = [0.23, 1, 0.32, 1] as const;
+
+function getHeadlineWords(
+  lines: readonly { text: string; muted: string; accent?: string }[],
+) {
+  const accentWords = new Set(
+    lines.flatMap(({ accent }) => accent?.split(/\s+/).filter(Boolean) ?? []),
   );
+  let characterIndex = 0;
+
+  return lines
+    .flatMap(({ text, muted }) => [text, muted].filter(Boolean))
+    .flatMap((line) => line.split(/\s+/).filter(Boolean))
+    .map((word) => {
+      const characters = Array.from(word).map((character) => ({
+        character,
+        index: characterIndex++,
+      }));
+
+      characterIndex += 1;
+
+      return {
+        characters,
+        isAccent: accentWords.has(word.replace(/[^a-z]/gi, "")),
+        word,
+      };
+    });
 }
 
 export function Hero() {
   const reduce = Boolean(useReducedMotion());
-  const { hero, logos, media } = content;
+  const { hero, media } = content;
+  const headlineWords = getHeadlineWords(hero.headline);
+  const headline = headlineWords.map(({ word }) => word).join(" ");
+  const characterCount = headlineWords.reduce(
+    (count, { characters }) => count + characters.length,
+    0,
+  );
+  const supportingDelay = wordRevealDelay + characterCount * characterRevealStagger + 0.24;
 
   return (
     <section className="hero-premium">
@@ -41,52 +66,69 @@ export function Hero() {
         <motion.div
           animate={{ opacity: 1, transform: "translate3d(0, 0, 0)" }}
           initial={reduce ? false : { opacity: 0, transform: "translate3d(0, 10px, 0)" }}
-          transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+          transition={{ delay: reduce ? 0 : supportingDelay, duration: 0.4, ease: heroEase }}
         >
           <Eyebrow>{hero.ycLabel}</Eyebrow>
         </motion.div>
 
-        <SectionHeading
-          as="h1"
-          className="hero-title"
-          lines={hero.headline}
-        />
+        <motion.h1 aria-label={headline} className="font-display text-balance hero-title" initial={false}>
+          {headlineWords.map(({ characters, isAccent, word }, wordIndex) => (
+            <span
+              aria-hidden="true"
+              className={`hero-title-word${isAccent ? " hero-title-accent" : ""}`}
+              data-hero-word={word}
+              key={`${word}-${wordIndex}`}
+            >
+              {characters.map(({ character, index }) => (
+                <motion.span
+                  animate={{
+                    clipPath: "inset(0 0% 0 0)",
+                    opacity: 1,
+                    transform: "translate3d(0, 0, 0)",
+                  }}
+                  className="hero-title-character"
+                  initial={reduce ? false : {
+                    clipPath: "inset(0 100% 0 0)",
+                    opacity: 0,
+                    transform: "translate3d(0, 0.16em, 0)",
+                  }}
+                  key={`${character}-${index}`}
+                  transition={{
+                    delay: reduce ? 0 : wordRevealDelay + index * characterRevealStagger,
+                    duration: characterRevealDuration,
+                    ease: heroEase,
+                  }}
+                >
+                  {character}
+                </motion.span>
+              ))}
+              {wordIndex < headlineWords.length - 1 ? "\u00a0" : ""}
+            </span>
+          ))}
+        </motion.h1>
 
         <motion.p
           animate={{ opacity: 1, transform: "translate3d(0, 0, 0)" }}
           className="hero-subtitle"
           initial={reduce ? false : { opacity: 0, transform: "translate3d(0, 16px, 0)" }}
-          transition={{ delay: reduce ? 0 : 0.18, duration: 0.48, ease: [0.23, 1, 0.32, 1] }}
+          transition={{ delay: reduce ? 0 : supportingDelay + 0.1, duration: 0.48, ease: heroEase }}
         >
           {hero.sub}
         </motion.p>
 
-        <motion.div
-          animate={{ opacity: 1 }}
-          className="hero-actions"
-          initial={reduce ? false : { opacity: 0 }}
-          transition={{ delay: reduce ? 0 : 0.28, duration: 0.4 }}
-        >
+        <motion.div className="hero-actions hero-actions--initial" initial={false}>
           <PremiumButton href="#contact" tone="ink">
             {hero.ctaPrimary}
           </PremiumButton>
+          {/*
           <a className="hero-secondary-link" href="#how">
             <span>{hero.ctaSecondary}</span>
             <span aria-hidden="true">↘</span>
           </a>
+          */}
         </motion.div>
 
-        <div className="hero-proof">
-          <p className="font-meta text-[9px] text-ink/38">{logos.intro}</p>
-          <div className="hero-proof-logos">
-            <GoogleWordmark />
-            {logos.placeholders.slice(0, 4).map((name) => (
-              <span className="font-display text-sm font-medium text-ink/28" key={name}>
-                {name}
-              </span>
-            ))}
-          </div>
-        </div>
+
       </div>
 
       <motion.div
@@ -94,7 +136,7 @@ export function Hero() {
         animate={{ opacity: 1, transform: "translate3d(0, 0, 0)" }}
         className="hero-media-rail"
         initial={reduce ? false : { opacity: 0, transform: "translate3d(0, 48px, 0)" }}
-        transition={{ delay: 0.22, duration: 0.68, ease: [0.23, 1, 0.32, 1] }}
+        transition={{ delay: reduce ? 0 : supportingDelay + 0.3, duration: 0.68, ease: heroEase }}
       >
         {media.heroRail.map((item, index) => (
           <div className={railClasses[index]} key={item.src}>
