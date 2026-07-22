@@ -708,22 +708,6 @@ rtk bun run build
 
 Expected: all tests pass; typecheck, lint, and production build complete without warnings or errors.
 
-- [ ] **Step 4: Browser QA at required widths**
-
-Using the already-running Bun development server, verify:
-
-- 1440×900 and 1280×800: hero fits, nav is optically centered, FAQ/How use width well.
-- 1024×768 and 768×1024: editorial grids collapse intentionally and sticky elements release.
-- 430×932 and 375×812: no horizontal scroll, portrait control scales, mobile nav and touch states work.
-- Fine pointer: CTA hand crosses left-to-right, rolling glyphs are interruptible, portraits spread.
-- Keyboard: skip link, nav, How rows, portrait control, FAQ, form, and footer follow logical order.
-- Reduced motion: no travel, parallax, rolling text, or springs; all final content remains visible.
-- Console: no errors, hydration warnings, missing image warnings, or failed requests.
-
-- [ ] **Step 5: Apply only defects found by QA, then rerun affected checks**
-
-Record each verified defect in the commit body and change only the component responsible. Rerun the full
-automated verification set after the final visual fix.
 
 - [ ] **Step 6: Final commit**
 
