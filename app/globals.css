@@ -15,6 +15,18 @@
 :root {
   --background: var(--color-paper);
   --foreground: var(--color-ink);
+  --ease-out-ui: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out-ui: cubic-bezier(0.77, 0, 0.175, 1);
+  --shadow-premium:
+    0 1px 1px rgb(18 18 18 / 8%),
+    0 3px 4px rgb(18 18 18 / 7%),
+    0 8px 12px rgb(18 18 18 / 6%),
+    0 20px 24px -8px rgb(18 18 18 / 18%);
+  --shadow-media:
+    0 0.64px 3.2px rgb(18 18 18 / 1%),
+    0 1.9px 9.7px rgb(18 18 18 / 2%),
+    0 5.1px 25.5px rgb(18 18 18 / 4%),
+    0 16px 80px rgb(18 18 18 / 10%);
 }
 
 * {
@@ -34,6 +46,190 @@ body {
   overflow-x: hidden;
 }
 
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.section-heading-mask {
+  overflow: hidden;
+  padding-bottom: 0.08em;
+}
+
+.premium-cta-cluster {
+  position: relative;
+  display: inline-flex;
+  isolation: isolate;
+}
+
+.premium-cta {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  min-height: 3.35rem;
+  align-items: center;
+  justify-content: center;
+  overflow: clip;
+  border-radius: 999px;
+  padding: 0.86rem 1.9rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  box-shadow: var(--shadow-premium);
+  transition: transform 140ms var(--ease-out-ui), background-color 180ms ease,
+    color 180ms ease;
+}
+
+.premium-cta--ink { background: var(--color-ink); color: var(--color-paper); }
+.premium-cta--ember { background: var(--color-ember); color: var(--color-paper); }
+.premium-cta--paper { background: var(--color-paper); color: var(--color-ink); }
+.premium-cta:active { transform: scale(0.97); }
+.premium-cta:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--color-signal) 70%, white);
+  outline-offset: 4px;
+}
+
+.premium-cta-label { display: inline-flex; line-height: 1.25; }
+.premium-cta-glyph { display: block; height: 1.25em; overflow: hidden; }
+.premium-cta-glyph-track {
+  display: flex;
+  flex-direction: column;
+  transform: translate3d(0, 0, 0);
+}
+
+.premium-cta-hand-track {
+  position: absolute;
+  z-index: 3;
+  inset: 0 -2.35rem;
+  pointer-events: none;
+}
+
+.premium-cta-hand-marker {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--color-ink);
+  transform: translate3d(-50%, 0, 0) rotate(-8deg);
+}
+
+.premium-cta-hand { position: absolute; width: 1.8rem; height: 1.8rem; }
+.premium-cta-hand--peace { opacity: 0; filter: blur(2px); }
+
+.media-placeholder {
+  position: relative;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--color-ash) 12%, white);
+}
+
+.media-placeholder-label {
+  position: absolute;
+  right: 0.75rem;
+  bottom: 0.75rem;
+  border: 1px solid rgb(255 255 255 / 60%);
+  border-radius: 0.55rem;
+  background: rgb(255 255 255 / 76%);
+  padding: 0.35rem 0.55rem;
+  color: rgb(18 18 18 / 58%);
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  backdrop-filter: blur(10px);
+}
+
+.portrait-stack-control {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 2rem;
+  padding: 1rem 0 0;
+  cursor: pointer;
+}
+
+.portrait-stack-control:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--color-signal) 72%, white);
+  outline-offset: 6px;
+}
+
+.portrait-stack-stage {
+  position: relative;
+  display: block;
+  width: 564px;
+  height: 220px;
+}
+
+.portrait-stack-card {
+  position: absolute;
+  top: 0;
+  display: block;
+  width: 180px;
+  height: 180px;
+  overflow: hidden;
+  border: 8px solid var(--color-paper);
+  border-radius: 32px;
+  background: var(--color-paper);
+  box-shadow: var(--shadow-media);
+  transform-origin: 50% 50%;
+  will-change: transform;
+}
+
+.portrait-stack-gesture {
+  position: relative;
+  display: block;
+  width: 2rem;
+  height: 2rem;
+  margin-top: -0.5rem;
+}
+
+.portrait-stack-icon {
+  position: absolute;
+  inset: 0;
+  width: 2rem;
+  height: 2rem;
+  opacity: 1;
+  transition: opacity 160ms ease, filter 160ms ease;
+}
+
+.portrait-stack-icon.is-hidden { opacity: 0; filter: blur(2px); }
+
+@media (hover: hover) and (pointer: fine) {
+  .premium-cta-glyph-track {
+    transition: transform 300ms var(--ease-out-ui);
+    transition-delay: calc(var(--glyph-index) * 18ms);
+  }
+  .premium-cta-cluster:hover .premium-cta-glyph-track {
+    transform: translate3d(0, -50%, 0);
+  }
+  .premium-cta-hand-marker {
+    transition: transform 320ms var(--ease-out-ui);
+  }
+  .premium-cta-hand {
+    transition: opacity 160ms ease, filter 160ms ease;
+  }
+  .premium-cta-cluster:hover .premium-cta-hand-marker {
+    transform: translate3d(50%, 0, 0) rotate(5deg);
+  }
+  .premium-cta-cluster:hover .premium-cta-hand--point {
+    opacity: 0;
+    filter: blur(2px);
+  }
+  .premium-cta-cluster:hover .premium-cta-hand--peace {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+@media (max-width: 640px) {
+  .portrait-stack-stage {
+    width: 564px;
+    transform: scale(0.62);
+    transform-origin: top center;
+    margin-bottom: -84px;
+  }
+  .media-placeholder-label { display: none; }
+}
+
 /* Heading rhythm from the Zolo reference */
 .font-display {
   font-family: var(--font-display);
@@ -50,5 +246,15 @@ body {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .premium-cta-glyph-track,
+  .premium-cta-hand-marker,
+  .portrait-stack-icon {
+    transition-duration: 0.01ms;
+  }
+
+  .premium-cta-hand-track {
+    display: none;
   }
 }
