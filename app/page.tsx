@@ -12,9 +12,12 @@ import { Contact } from "@/components/sections/Contact";
 export default function Home() {
   return (
     <>
+      <a className="skip-link" href="#main-content">
+        Skip to content
+      </a>
       <WeaveCanvas />
       <Nav />
-      <main className="relative">
+      <main className="relative" id="main-content">
         <div className="bg-bone">
           <Hero />
         </div>

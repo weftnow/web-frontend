@@ -1,16 +1,23 @@
 "use client";
 
-import { content } from "@/content";
-import { RevealText } from "@/components/ui/RevealText";
-import { Eyebrow } from "@/components/ui/Eyebrow";
-import { PillButton } from "@/components/ui/PillButton";
 import { motion, useReducedMotion } from "motion/react";
-import { fadeUp } from "@/lib/motion";
+import { content } from "@/content";
+import { Eyebrow } from "@/components/ui/Eyebrow";
+import { MediaPlaceholder } from "@/components/ui/MediaPlaceholder";
+import { PremiumButton } from "@/components/ui/PremiumButton";
+import { SectionHeading } from "@/components/ui/SectionHeading";
+
+const railClasses = [
+  "hero-media-card hero-media-card--one",
+  "hero-media-card hero-media-card--two",
+  "hero-media-card hero-media-card--three",
+  "hero-media-card hero-media-card--four",
+  "hero-media-card hero-media-card--five",
+] as const;
 
 function GoogleWordmark() {
-  // Real Google wordmark built from text with the brand's letter colors.
   return (
-    <span className="font-display text-2xl font-bold tracking-tight" aria-label="Google">
+    <span aria-label="Google" className="font-display text-lg font-bold tracking-tight">
       <span style={{ color: "#4285F4" }}>G</span>
       <span style={{ color: "#EA4335" }}>o</span>
       <span style={{ color: "#FBBC05" }}>o</span>
@@ -22,59 +29,84 @@ function GoogleWordmark() {
 }
 
 export function Hero() {
-  const reduce = useReducedMotion();
-  const { hero, logos } = content;
+  const reduce = Boolean(useReducedMotion());
+  const { hero, logos, media } = content;
 
   return (
-    <section className="relative z-10 flex min-h-[92vh] flex-col items-center justify-center overflow-hidden px-6 pt-32 pb-16 text-center">
-      <motion.div
-        initial={reduce ? undefined : "hidden"}
-        animate={reduce ? undefined : "show"}
-        variants={fadeUp}
-      >
-        <Eyebrow>{hero.ycLabel}</Eyebrow>
-      </motion.div>
+    <section className="hero-premium">
+      <div aria-hidden="true" className="hero-ambient hero-ambient--ember" />
+      <div aria-hidden="true" className="hero-ambient hero-ambient--signal" />
 
-      <RevealText
-        as="h1"
-        lines={hero.headline}
-        className="mt-8 max-w-4xl text-4xl leading-[1.08] text-ink sm:text-5xl md:text-6xl lg:text-7xl"
-      />
+      <div className="hero-copy">
+        <motion.div
+          animate={{ opacity: 1, transform: "translate3d(0, 0, 0)" }}
+          initial={reduce ? false : { opacity: 0, transform: "translate3d(0, 10px, 0)" }}
+          transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+        >
+          <Eyebrow>{hero.ycLabel}</Eyebrow>
+        </motion.div>
 
-      <motion.p
-        className="mt-8 max-w-xl text-lg text-ink/60"
-        initial={reduce ? undefined : { opacity: 0, y: 16 }}
-        animate={reduce ? undefined : { opacity: 1, y: 0 }}
-        transition={{ delay: 0.6, duration: 0.6 }}
-      >
-        {hero.sub}
-      </motion.p>
+        <SectionHeading
+          as="h1"
+          className="hero-title"
+          lines={hero.headline}
+        />
 
-      <motion.div
-        className="mt-10 flex flex-wrap items-center justify-center gap-3"
-        initial={reduce ? undefined : { opacity: 0 }}
-        animate={reduce ? undefined : { opacity: 1 }}
-        transition={{ delay: 0.8, duration: 0.5 }}
-      >
-        <PillButton href="#contact" variant="solid">
-          {hero.ctaPrimary}
-        </PillButton>
-        <PillButton href="#how" variant="outline">
-          {hero.ctaSecondary}
-        </PillButton>
-      </motion.div>
+        <motion.p
+          animate={{ opacity: 1, transform: "translate3d(0, 0, 0)" }}
+          className="hero-subtitle"
+          initial={reduce ? false : { opacity: 0, transform: "translate3d(0, 16px, 0)" }}
+          transition={{ delay: reduce ? 0 : 0.18, duration: 0.48, ease: [0.23, 1, 0.32, 1] }}
+        >
+          {hero.sub}
+        </motion.p>
 
-      <div className="mt-20 w-full max-w-4xl">
-        <p className="font-meta text-[11px] text-ink/40">{logos.intro}</p>
-        <div className="mt-6 flex flex-wrap items-center justify-center gap-x-10 gap-y-4 opacity-80">
-          <GoogleWordmark />
-          {logos.placeholders.map((name) => (
-            <span key={name} className="font-display text-xl font-medium text-ink/30">
-              {name}
-            </span>
-          ))}
+        <motion.div
+          animate={{ opacity: 1 }}
+          className="hero-actions"
+          initial={reduce ? false : { opacity: 0 }}
+          transition={{ delay: reduce ? 0 : 0.28, duration: 0.4 }}
+        >
+          <PremiumButton href="#contact" tone="ink">
+            {hero.ctaPrimary}
+          </PremiumButton>
+          <a className="hero-secondary-link" href="#how">
+            <span>{hero.ctaSecondary}</span>
+            <span aria-hidden="true">↘</span>
+          </a>
+        </motion.div>
+
+        <div className="hero-proof">
+          <p className="font-meta text-[9px] text-ink/38">{logos.intro}</p>
+          <div className="hero-proof-logos">
+            <GoogleWordmark />
+            {logos.placeholders.slice(0, 4).map((name) => (
+              <span className="font-display text-sm font-medium text-ink/28" key={name}>
+                {name}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
+
+      <motion.div
+        aria-label="Replaceable Weft experience imagery"
+        animate={{ opacity: 1, transform: "translate3d(0, 0, 0)" }}
+        className="hero-media-rail"
+        initial={reduce ? false : { opacity: 0, transform: "translate3d(0, 48px, 0)" }}
+        transition={{ delay: 0.22, duration: 0.68, ease: [0.23, 1, 0.32, 1] }}
+      >
+        {media.heroRail.map((item, index) => (
+          <div className={railClasses[index]} key={item.src}>
+            <MediaPlaceholder
+              className="h-full w-full"
+              media={item}
+              priority={index < 3}
+              sizes="(max-width: 640px) 70vw, (max-width: 1024px) 42vw, 28vw"
+            />
+          </div>
+        ))}
+      </motion.div>
     </section>
   );
 }

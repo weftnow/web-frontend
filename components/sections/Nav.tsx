@@ -1,11 +1,26 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { content } from "@/content";
-import { PillButton } from "@/components/ui/PillButton";
+
+function RollingNavLabel({ label }: { label: string }) {
+  return (
+    <span aria-hidden="true" className="nav-roll-window">
+      <span className="nav-roll-track">
+        <span>{label}</span>
+        <span>{label}</span>
+      </span>
+    </span>
+  );
+}
 
 export function Nav() {
+  const reduce = Boolean(useReducedMotion());
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [activeHref, setActiveHref] = useState("");
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
@@ -13,33 +28,108 @@ export function Nav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    const sections = content.nav.links
+      .map((link) => document.querySelector(link.href))
+      .filter((section): section is Element => Boolean(section));
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const active = entries.find((entry) => entry.isIntersecting);
+        if (active?.target.id) setActiveHref(`#${active.target.id}`);
+      },
+      { rootMargin: "-20% 0px -65%", threshold: 0 },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <header className="fixed inset-x-0 top-4 z-50 flex justify-center px-4">
+    <header className="nav-premium-wrap">
       <nav
-        className={`flex w-full max-w-3xl items-center justify-between rounded-full px-4 py-2 transition-all duration-300 ${
-          scrolled
-            ? "bg-paper/80 shadow-[0_8px_30px_rgba(0,0,0,0.06)] backdrop-blur-md"
-            : "bg-paper/40 backdrop-blur-sm"
-        }`}
+        aria-label="Primary navigation"
+        className="nav-premium-shell"
+        data-scrolled={scrolled}
       >
-        <a href="#" className="font-display px-3 text-xl font-bold text-ink">
-          weft
+        <a aria-label="Weft home" className="nav-brand" href="#main-content">
+          <span aria-hidden="true" className="weft-mark">
+            <span />
+            <span />
+            <span />
+            <span />
+          </span>
+          <span className="font-display">weft</span>
         </a>
-        <div className="hidden items-center gap-6 md:flex">
-          {content.nav.links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              className="font-meta text-[11px] text-ink/70 transition-colors hover:text-ink"
-            >
-              {l.label}
-            </a>
-          ))}
+
+        <div className="nav-desktop-links">
+          {content.nav.links.map((link) => {
+            const active = activeHref === link.href;
+            return (
+              <a
+                aria-current={active ? "location" : undefined}
+                aria-label={link.label}
+                className="nav-link"
+                data-active={active}
+                href={link.href}
+                key={link.href}
+              >
+                <RollingNavLabel label={link.label} />
+              </a>
+            );
+          })}
         </div>
-        <PillButton href="#contact" className="!px-5 !py-2 text-xs">
-          {content.nav.cta}
-        </PillButton>
+
+        <div className="nav-actions">
+          <a className="nav-cta" href="#contact">
+            {content.nav.cta}
+          </a>
+          <button
+            aria-controls="mobile-navigation"
+            aria-expanded={menuOpen}
+            aria-label={menuOpen ? "Close navigation" : "Open navigation"}
+            className="nav-menu-toggle"
+            onClick={() => setMenuOpen((open) => !open)}
+            type="button"
+          >
+            <span />
+            <span />
+          </button>
+        </div>
       </nav>
+
+      <AnimatePresence initial={false}>
+        {menuOpen ? (
+          <motion.div
+            animate={{ opacity: 1, transform: "translate3d(0, 0, 0) scale(1)" }}
+            className="nav-mobile-panel"
+            exit={{ opacity: 0, transform: "translate3d(0, -6px, 0) scale(.98)" }}
+            id="mobile-navigation"
+            initial={
+              reduce
+                ? false
+                : { opacity: 0, transform: "translate3d(0, -6px, 0) scale(.98)" }
+            }
+            transition={{ duration: reduce ? 0 : 0.2, ease: [0.23, 1, 0.32, 1] }}
+          >
+            {content.nav.links.map((link, index) => (
+              <a
+                href={link.href}
+                key={link.href}
+                onClick={() => setMenuOpen(false)}
+              >
+                <span className="font-mono text-[10px] text-ink/35">
+                  0{index + 1}
+                </span>
+                <span>{link.label}</span>
+              </a>
+            ))}
+            <a className="nav-mobile-cta" href="#contact" onClick={() => setMenuOpen(false)}>
+              {content.nav.cta}
+            </a>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
     </header>
   );
 }
