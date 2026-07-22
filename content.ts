@@ -140,11 +140,8 @@ export const content = {
 
   hero: {
     // Two-tone: `muted` renders in --ash and resolves last.
-    headline: [
-      { text: "The person who changes your year is in this room.", muted: "" },
-      { text: "You will spend the night talking to", muted: "someone else." },
-    ],
-    sub: "Weft finds the four people at your event who should be in a room together — and puts them there.",
+    headline: [{ text: "Real matches at networking events.", muted: "", accent: "networking" }],
+    sub: "In that networking event there's someone you align with, somoene you need. Weft helps you find them",
     ctaPrimary: "Book a demo",
     ctaSecondary: "See how it works",
     ycLabel: "Backed by Y Combinator",

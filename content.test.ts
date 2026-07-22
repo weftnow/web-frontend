@@ -28,3 +28,16 @@ describe("placeholder media catalog", () => {
     }
   });
 });
+
+test("uses the approved hero message", () => {
+  expect(content.hero.headline).toEqual([
+    {
+      text: "Real matches at networking events.",
+      muted: "",
+      accent: "networking",
+    },
+  ]);
+  expect(content.hero.sub).toBe(
+    "In that networking event there's someone you align with, somoene you need. Weft helps you find them",
+  );
+});
