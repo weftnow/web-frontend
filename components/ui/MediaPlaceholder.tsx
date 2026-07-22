@@ -11,11 +11,13 @@ export type MediaAsset = {
 export function MediaPlaceholder({
   media,
   className = "",
+  loading,
   sizes,
   priority = false,
 }: {
   media: MediaAsset;
   className?: string;
+  loading?: "eager" | "lazy";
   sizes: string;
   priority?: boolean;
 }) {
@@ -25,6 +27,7 @@ export function MediaPlaceholder({
         alt={media.alt}
         className="h-full w-full object-cover"
         height={media.height}
+        loading={loading}
         priority={priority}
         sizes={sizes}
         src={media.src}

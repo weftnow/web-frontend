@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { content } from "@/content";
 import { SectionShell } from "@/components/ui/SectionShell";
-import { RevealText } from "@/components/ui/RevealText";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { MediaPlaceholder } from "@/components/ui/MediaPlaceholder";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
@@ -24,14 +24,14 @@ export function HowItWorks() {
     <SectionShell id="how" act="warm" className="scroll-mt-20 md:scroll-mt-24">
       <div className="flex max-w-3xl flex-col items-start gap-4">
         <Eyebrow>{how.eyebrow}</Eyebrow>
-        <RevealText
+        <SectionHeading
           as="h2"
           lines={how.headline}
           className="text-4xl text-ink md:text-6xl"
         />
       </div>
 
-      <div className="mt-16 grid items-start gap-14 md:grid-cols-[minmax(0,2fr)_minmax(18rem,1fr)] md:gap-10 lg:gap-16">
+      <div className="mt-16 grid items-start gap-14 xl:grid-cols-[minmax(0,2fr)_minmax(18rem,1fr)] xl:gap-16">
         <div className="flex flex-col">
           {how.steps.map((step, index) => {
             const isActive = index === activeStep;
@@ -40,7 +40,7 @@ export function HowItWorks() {
               <motion.button
                 aria-controls="how-preview"
                 aria-pressed={isActive}
-                className="group grid w-full grid-cols-[2.5rem_1fr] gap-x-4 border-t border-ink/12 py-9 text-left outline-none focus-visible:rounded-xl focus-visible:ring-2 focus-visible:ring-signal focus-visible:ring-offset-4 focus-visible:ring-offset-bone md:grid-cols-[3rem_minmax(0,0.9fr)_minmax(0,1.1fr)] md:gap-x-6 md:py-11"
+                className="group grid w-full grid-cols-[2.5rem_1fr] gap-x-4 border-t border-ink/12 py-9 text-left outline-none focus-visible:rounded-xl focus-visible:ring-2 focus-visible:ring-signal focus-visible:ring-offset-4 focus-visible:ring-offset-bone xl:grid-cols-[3rem_minmax(0,0.9fr)_minmax(0,1.1fr)] xl:gap-x-6 md:py-11"
                 data-active={isActive}
                 initial={reduce ? false : "hidden"}
                 key={step.n}
@@ -65,12 +65,13 @@ export function HowItWorks() {
                 >
                   {step.title}
                 </h3>
-                <p className="col-span-2 mt-4 max-w-lg text-base leading-relaxed text-ink/58 md:col-span-1 md:mt-0">
+                <p className="col-span-2 mt-4 max-w-lg text-base leading-relaxed text-ink/58 xl:col-span-1 xl:mt-0">
                   {step.body}
                 </p>
 
                 <MediaPlaceholder
-                  className="col-span-2 mt-7 aspect-[4/3] w-full rounded-[1.5rem] border-[6px] border-paper shadow-[var(--shadow-media)] md:hidden"
+                  className="col-span-2 mt-7 aspect-[4/3] w-full rounded-[1.5rem] border-[6px] border-paper shadow-[var(--shadow-media)] xl:hidden"
+                  loading={index === 0 ? "eager" : undefined}
                   media={media.how[index]}
                   sizes="calc(100vw - 48px)"
                 />
@@ -80,7 +81,7 @@ export function HowItWorks() {
           <div className="border-t border-ink/12" />
         </div>
 
-        <div className="sticky top-28 hidden md:block">
+        <div className="sticky top-28 hidden xl:block">
           <div
             aria-labelledby={`how-step-title-${activeStep}`}
             aria-live="polite"
@@ -99,6 +100,7 @@ export function HowItWorks() {
               >
                 <MediaPlaceholder
                   className="h-full w-full"
+                  loading={activeStep === 0 ? "eager" : undefined}
                   media={activeMedia}
                   sizes="(max-width: 1023px) 34vw, 30vw"
                 />

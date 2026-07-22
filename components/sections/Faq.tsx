@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { content } from "@/content";
 import { SectionShell } from "@/components/ui/SectionShell";
-import { RevealText } from "@/components/ui/RevealText";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { getNextOpenIndex } from "@/lib/interactions";
 import { AnimatePresence, motion } from "motion/react";
@@ -17,7 +17,7 @@ export function Faq() {
       <div className="grid gap-16 lg:grid-cols-[minmax(0,0.54fr)_minmax(0,1fr)] lg:gap-20">
         <div className="flex flex-col items-start gap-4 lg:sticky lg:top-36 lg:self-start">
           <Eyebrow>{faq.eyebrow}</Eyebrow>
-          <RevealText
+          <SectionHeading
             as="h2"
             lines={faq.headline}
             className="max-w-sm text-4xl text-ink md:text-5xl"

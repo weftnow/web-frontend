@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import { content } from "@/content";
 import { SectionShell } from "@/components/ui/SectionShell";
-import { RevealText } from "@/components/ui/RevealText";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { MediaPlaceholder } from "@/components/ui/MediaPlaceholder";
 import { useReducedMotion } from "motion/react";
@@ -42,7 +42,7 @@ export function Testimonials() {
     <SectionShell id="stories" act="warm">
       <div className="flex flex-col items-start gap-4">
         <Eyebrow>{testimonials.eyebrow}</Eyebrow>
-        <RevealText
+        <SectionHeading
           as="h2"
           lines={testimonials.headline}
           className="text-4xl text-ink md:text-6xl"

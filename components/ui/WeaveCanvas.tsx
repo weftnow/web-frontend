@@ -23,20 +23,20 @@ export function WeaveCanvas() {
         d="M 20 0 C 20 25, 20 35, 50 50 C 80 65, 80 75, 80 100"
         fill="none"
         stroke="#F4511E"
-        strokeWidth="0.35"
+        strokeWidth="0.28"
         strokeLinecap="round"
         style={{ pathLength: reduce ? staticDraw : draw }}
-        opacity={0.5}
+        opacity={0.32}
       />
       {/* Signal thread — mirror image, crosses the ember at the turn (~50%) */}
       <motion.path
         d="M 80 0 C 80 25, 80 35, 50 50 C 20 65, 20 75, 20 100"
         fill="none"
         stroke="#0090DE"
-        strokeWidth="0.35"
+        strokeWidth="0.28"
         strokeLinecap="round"
         style={{ pathLength: reduce ? staticDraw : draw }}
-        opacity={0.35}
+        opacity={0.22}
       />
     </svg>
   );

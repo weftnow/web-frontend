@@ -3,7 +3,7 @@
 import { content } from "@/content";
 import { MediaPlaceholder } from "@/components/ui/MediaPlaceholder";
 import { SectionShell } from "@/components/ui/SectionShell";
-import { RevealText } from "@/components/ui/RevealText";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 import { motion, useReducedMotion } from "motion/react";
 import { fadeUp } from "@/lib/motion";
 
@@ -22,7 +22,7 @@ export function Problem() {
           <span className="h-1.5 w-1.5 rounded-full bg-ember" aria-hidden />
           {problem.eyebrow}
         </span>
-        <RevealText
+          <SectionHeading
           as="h2"
           lines={problem.headline}
           className="max-w-3xl text-4xl text-paper md:text-6xl"

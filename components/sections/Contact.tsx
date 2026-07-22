@@ -4,7 +4,7 @@ import { content } from "@/content";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { MediaPlaceholder } from "@/components/ui/MediaPlaceholder";
 import { PremiumButton } from "@/components/ui/PremiumButton";
-import { RevealText } from "@/components/ui/RevealText";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 
 export function Contact() {
   const { contact, media, nav, reveal } = content;
@@ -13,7 +13,7 @@ export function Contact() {
   return (
     <footer
       id="contact"
-      className="relative overflow-hidden bg-bone px-6 pt-28 md:px-10 md:pt-40"
+      className="relative z-10 overflow-hidden bg-bone px-6 pt-28 md:px-10 md:pt-40"
     >
       <div className="mx-auto w-full max-w-6xl">
         <div className="grid overflow-hidden rounded-[2rem] bg-paper shadow-[var(--shadow-media)] lg:grid-cols-[minmax(320px,0.82fr)_minmax(0,1.18fr)] lg:rounded-[2.5rem]">
@@ -45,7 +45,7 @@ export function Contact() {
           <div className="px-7 py-12 sm:px-10 lg:px-14 lg:py-16 xl:px-16">
             <div className="flex flex-col items-start gap-4">
               <Eyebrow>{contact.eyebrow}</Eyebrow>
-              <RevealText
+              <SectionHeading
                 as="h2"
                 lines={contact.headline}
                 className="max-w-2xl text-4xl text-ink md:text-5xl"

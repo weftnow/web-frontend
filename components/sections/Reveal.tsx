@@ -2,7 +2,7 @@
 
 import { content } from "@/content";
 import { SectionShell } from "@/components/ui/SectionShell";
-import { RevealText } from "@/components/ui/RevealText";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Counter } from "@/components/ui/Counter";
 import { PortraitStack } from "@/components/ui/PortraitStack";
@@ -25,7 +25,7 @@ export function Reveal() {
 
         <div className="min-w-0">
           <Eyebrow>{reveal.eyebrow}</Eyebrow>
-          <RevealText
+          <SectionHeading
             as="h2"
             lines={reveal.headline}
             className="mt-4 text-4xl text-ink md:text-5xl"
