@@ -17,7 +17,7 @@ export function Reveal() {
           <PortraitStack portraits={media.portraits} />
           <div className="mx-auto mt-5 flex max-w-sm items-start justify-between gap-6 border-t border-ink/10 pt-4">
             <p className="font-meta text-[10px] text-ink/68">Matched group</p>
-            <p className="max-w-[15rem] text-right text-xs leading-relaxed text-ink/48">
+            <p className="max-w-[15rem] text-right text-xs leading-relaxed text-ink/68">
               Hover, focus, or tap to bring the group together.
             </p>
           </div>

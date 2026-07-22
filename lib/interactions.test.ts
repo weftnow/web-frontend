@@ -2,9 +2,11 @@ import { describe, expect, test } from "bun:test";
 import {
   clampPreviewIndex,
   getNextOpenIndex,
+  getPortraitDisclosureState,
   getPortraitTransforms,
   PORTRAIT_SPREAD_TRANSFORMS,
   PORTRAIT_STACKED_TRANSFORMS,
+  togglePortraitExpanded,
 } from "./interactions";
 
 test("preview index stays within the three-step media catalog", () => {
@@ -35,6 +37,18 @@ describe("portrait stack transforms", () => {
     expect(getPortraitTransforms(false, false)).toEqual(
       PORTRAIT_STACKED_TRANSFORMS,
     );
+  });
+});
+
+describe("portrait stack disclosure state", () => {
+  test("announces reduced-motion portraits as already spread", () => {
+    expect(getPortraitDisclosureState(false, true)).toBe(true);
+    expect(getPortraitDisclosureState(false, false)).toBe(false);
+  });
+
+  test("toggles from the state captured before pointer focus", () => {
+    expect(togglePortraitExpanded(false)).toBe(true);
+    expect(togglePortraitExpanded(true)).toBe(false);
   });
 });
 

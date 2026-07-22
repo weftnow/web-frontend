@@ -10,11 +10,22 @@ export const PORTRAIT_SPREAD_TRANSFORMS = [
   "translate3d(0, 0, 0) rotate(0deg)",
 ] as const;
 
+export function getPortraitDisclosureState(
+  expanded: boolean,
+  reducedMotion: boolean,
+) {
+  return expanded || reducedMotion;
+}
+
+export function togglePortraitExpanded(expandedAtPointerDown: boolean) {
+  return !expandedAtPointerDown;
+}
+
 export function getPortraitTransforms(
   expanded: boolean,
   reducedMotion: boolean,
 ) {
-  return expanded || reducedMotion
+  return getPortraitDisclosureState(expanded, reducedMotion)
     ? PORTRAIT_SPREAD_TRANSFORMS
     : PORTRAIT_STACKED_TRANSFORMS;
 }

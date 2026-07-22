@@ -109,7 +109,7 @@ export function Testimonials() {
               />
               <div className="pb-1">
                 <p className="font-medium text-ink">{supporting[1].name}</p>
-                <p className="font-meta mt-1 text-[10px] leading-relaxed text-ink/48">
+                <p className="font-meta mt-1 text-[10px] leading-relaxed text-ink/68">
                   {supporting[1].title}
                 </p>
               </div>
@@ -186,7 +186,7 @@ function StoryCopy({
       </p>
       <div className="mt-7">
         <p className="font-medium text-ink">{story.name}</p>
-        <p className="font-meta mt-1 text-[10px] leading-relaxed text-ink/48">
+        <p className="font-meta mt-1 text-[10px] leading-relaxed text-ink/68">
           {story.title}
         </p>
       </div>
