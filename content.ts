@@ -1,4 +1,133 @@
 export const content = {
+  media: {
+    heroRail: [
+      {
+        src: "/placeholders/weft/intake-preview.png",
+        width: 2340,
+        height: 1560,
+        alt: "Placeholder view of an attendee intake experience",
+        placeholder: true,
+      },
+      {
+        src: "/placeholders/weft/matching-preview.png",
+        width: 2340,
+        height: 1560,
+        alt: "Placeholder visual for Weft matchmaking",
+        placeholder: true,
+      },
+      {
+        src: "/placeholders/weft/reveal-preview.png",
+        width: 2340,
+        height: 1560,
+        alt: "Placeholder visual for a group reveal",
+        placeholder: true,
+      },
+      {
+        src: "/placeholders/weft/dashboard-preview.png",
+        width: 2340,
+        height: 1560,
+        alt: "Placeholder view of an organizer dashboard",
+        placeholder: true,
+      },
+      {
+        src: "/placeholders/weft/event-detail.png",
+        width: 2340,
+        height: 1560,
+        alt: "Placeholder detail from a branded event experience",
+        placeholder: true,
+      },
+    ],
+    portraits: [
+      {
+        src: "/placeholders/weft/attendee-01.png",
+        width: 1000,
+        height: 1500,
+        alt: "Placeholder portrait of a smiling event attendee",
+        placeholder: true,
+      },
+      {
+        src: "/placeholders/weft/attendee-02.png",
+        width: 447,
+        height: 495,
+        alt: "Placeholder portrait of a matched event attendee",
+        placeholder: true,
+      },
+      {
+        src: "/placeholders/weft/attendee-03.png",
+        width: 700,
+        height: 806,
+        alt: "Placeholder portrait of another matched attendee",
+        placeholder: true,
+      },
+    ],
+    problem: {
+      src: "/placeholders/weft/problem-room.png",
+      width: 816,
+      height: 1126,
+      alt: "Placeholder event portrait representing an unproductive room",
+      placeholder: true,
+    },
+    how: [
+      {
+        src: "/placeholders/weft/intake-preview.png",
+        width: 2340,
+        height: 1560,
+        alt: "Placeholder preview of attendee intake",
+        placeholder: true,
+      },
+      {
+        src: "/placeholders/weft/matching-preview.png",
+        width: 2340,
+        height: 1560,
+        alt: "Placeholder preview of group computation",
+        placeholder: true,
+      },
+      {
+        src: "/placeholders/weft/reveal-preview.png",
+        width: 2340,
+        height: 1560,
+        alt: "Placeholder preview of attendee reveal",
+        placeholder: true,
+      },
+    ],
+    outcome: {
+      src: "/placeholders/weft/outcome-feature.png",
+      width: 3021,
+      height: 2904,
+      alt: "Placeholder portrait for the featured event outcome",
+      placeholder: true,
+    },
+    testimonialAvatars: [
+      {
+        src: "/placeholders/weft/testimonial-01.png",
+        width: 1630,
+        height: 1775,
+        alt: "Placeholder portrait for the first testimonial",
+        placeholder: true,
+      },
+      {
+        src: "/placeholders/weft/testimonial-02.png",
+        width: 943,
+        height: 979,
+        alt: "Placeholder portrait for the second testimonial",
+        placeholder: true,
+      },
+      {
+        src: "/placeholders/weft/testimonial-03.png",
+        width: 736,
+        height: 1104,
+        alt: "Placeholder portrait for the third testimonial",
+        placeholder: true,
+      },
+    ],
+    contact: {
+      src: "/placeholders/weft/contact-art.png",
+      width: 800,
+      height: 800,
+      alt: "Placeholder artwork for the Weft contact panel",
+      placeholder: true,
+    },
+  },
   nav: {
     links: [
       { label: "The problem", href: "#problem" },
