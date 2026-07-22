@@ -22,3 +22,8 @@ export function getPortraitTransforms(
 export function getNextOpenIndex(current: number | null, requested: number) {
   return current === requested ? null : requested;
 }
+
+export function clampPreviewIndex(index: number, count: number) {
+  if (count < 1) return 0;
+  return Math.min(Math.max(index, 0), count - 1);
+}

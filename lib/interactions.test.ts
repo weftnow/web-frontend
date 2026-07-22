@@ -1,10 +1,17 @@
 import { describe, expect, test } from "bun:test";
 import {
+  clampPreviewIndex,
   getNextOpenIndex,
   getPortraitTransforms,
   PORTRAIT_SPREAD_TRANSFORMS,
   PORTRAIT_STACKED_TRANSFORMS,
 } from "./interactions";
+
+test("preview index stays within the three-step media catalog", () => {
+  expect(clampPreviewIndex(-1, 3)).toBe(0);
+  expect(clampPreviewIndex(1, 3)).toBe(1);
+  expect(clampPreviewIndex(4, 3)).toBe(2);
+});
 
 describe("portrait stack transforms", () => {
   test("matches the measured Zolo resting geometry", () => {
