@@ -11,4 +11,6 @@ test("premium CTA keeps one accessible label while rendering rolling glyphs", ()
   expect(html).toContain('aria-label="Book a demo"');
   expect(html).toContain('class="premium-cta');
   expect(html).toContain('aria-hidden="true"');
+  expect(html).toContain("M 14.619 6.75");
+  expect(html).toContain("M 14.185 2.395");
 });
