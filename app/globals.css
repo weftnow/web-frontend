@@ -109,10 +109,11 @@ a {
   display: grid;
   place-items: center;
   color: var(--color-ink);
-  transform: translate3d(-50%, 0, 0) rotate(-8deg);
+  transform: translate3d(-50%, 0, 0);
 }
 
 .premium-cta-hand { position: absolute; width: 1.8rem; height: 1.8rem; }
+.premium-cta-hand--point { transform: rotate(90deg); }
 .premium-cta-hand--peace { opacity: 0; filter: blur(2px); }
 
 .media-placeholder {
@@ -229,7 +230,7 @@ a {
   align-items: center;
   gap: 1.5rem;
   border: 1px solid rgb(18 18 18 / 8%);
-  border-radius: 24px;
+  border-radius: 999px;
   background: rgb(247 245 242 / 64%);
   padding: 0.42rem 0.5rem 0.42rem 1rem;
   box-shadow: inset 0 1px 0 rgb(255 255 255 / 82%);
@@ -290,9 +291,9 @@ a {
   border-radius: 0.4rem;
   color: rgb(18 18 18 / 66%);
   font-family: var(--font-mono);
-  font-size: 0.67rem;
-  font-weight: 500;
-  letter-spacing: 0.04em;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: normal;
 }
 
 .nav-link::after {
@@ -319,7 +320,7 @@ a {
   display: none;
   min-height: 48px;
   align-items: center;
-  border-radius: 17px;
+  border-radius: 999px;
   background: var(--color-ink);
   padding: 0 1.15rem;
   color: var(--color-paper);
@@ -379,10 +380,10 @@ a {
 .hero-premium {
   position: relative;
   z-index: 10;
-  min-height: clamp(820px, 94dvh, 1040px);
+  min-height: clamp(900px, 108dvh, 1180px);
   overflow: hidden;
   background: var(--color-bone);
-  padding: clamp(8.5rem, 14vh, 11rem) 1.5rem 0;
+  padding: clamp(10.5rem, 19vh, 14rem) 1.5rem 0;
 }
 
 .hero-ambient { position: absolute; border-radius: 999px; filter: blur(90px); pointer-events: none; }
@@ -391,20 +392,22 @@ a {
 
 .hero-copy { position: relative; z-index: 2; display: flex; width: min(1160px, 100%); margin: 0 auto; flex-direction: column; align-items: center; text-align: center; }
 .hero-title {
-  max-width: 1120px;
-  margin-top: 1.5rem;
+  max-width: 760px;
+  margin-top: 2rem;
   color: var(--color-ink);
-  font-size: clamp(3rem, 5vw, 5rem);
-  font-weight: 500;
+  font-size: clamp(2.75rem, 4.25vw, 4.5rem);
+  font-weight: 600;
   letter-spacing: -0.065em;
-  line-height: 0.98;
+  line-height: 1;
 }
-.hero-title > span + span { margin-top: 0.05em; }
-.hero-subtitle { max-width: 620px; margin-top: 1.75rem; color: rgb(18 18 18 / 58%); font-size: clamp(1rem, 1.4vw, 1.16rem); line-height: 1.65; text-wrap: pretty; }
-.hero-actions { display: flex; margin-top: 2rem; flex-wrap: wrap; align-items: center; justify-content: center; gap: 1.4rem; }
+.hero-title-word { display: inline-block; white-space: nowrap; }
+.hero-title-character { display: inline-block; will-change: clip-path, opacity, transform; }
+.hero-title-accent { color: var(--color-ash); }
+.hero-subtitle { max-width: 620px; margin-top: 2.1rem; color: rgb(18 18 18 / 58%); font-size: clamp(1rem, 1.4vw, 1.16rem); line-height: 1.65; text-wrap: pretty; }
+.hero-actions { display: flex; margin-top: 2.3rem; flex-wrap: wrap; align-items: center; justify-content: center; gap: 1.4rem; }
 .hero-secondary-link { display: inline-flex; align-items: center; gap: 0.5rem; border-bottom: 1px solid rgb(18 18 18 / 22%); padding: 0.45rem 0; color: rgb(18 18 18 / 68%); font-size: 0.88rem; font-weight: 600; transition: color 180ms ease, border-color 180ms ease; }
 .hero-secondary-link:hover { border-color: var(--color-ink); color: var(--color-ink); }
-.hero-proof { display: flex; margin-top: 2.5rem; flex-direction: column; align-items: center; gap: 0.75rem; }
+.hero-proof { display: flex; margin-top: 3rem; flex-direction: column; align-items: center; gap: 0.75rem; }
 .hero-proof-logos { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: clamp(1.25rem, 3vw, 2.4rem); }
 
 .hero-media-rail {
@@ -412,7 +415,7 @@ a {
   left: 50%;
   display: grid;
   width: max-content;
-  margin-top: 1.75rem;
+  margin-top: 2.5rem;
   translate: -50% 0;
   grid-template-columns: repeat(5, clamp(270px, 28vw, 420px));
   gap: clamp(1rem, 2vw, 1.8rem);
@@ -458,7 +461,7 @@ a {
     transition: opacity 160ms ease, filter 160ms ease;
   }
   .premium-cta-cluster:hover .premium-cta-hand-marker {
-    transform: translate3d(50%, 0, 0) rotate(5deg);
+    transform: translate3d(50%, 0, 0);
   }
   .premium-cta-cluster:hover .premium-cta-hand--point {
     opacity: 0;
@@ -483,7 +486,7 @@ a {
     margin-bottom: -84px;
   }
   .media-placeholder-label { display: none; }
-  .nav-premium-shell { gap: 0.75rem; border-radius: 20px; padding-left: 0.8rem; }
+  .nav-premium-shell { gap: 0.75rem; border-radius: 999px; padding-left: 0.8rem; }
   .nav-brand .font-display { font-size: 0.95rem; }
   .hero-premium { min-height: auto; padding: 7.4rem 1rem 0; }
   .hero-title { max-width: 390px; font-size: clamp(2.65rem, 13vw, 4rem); line-height: 1.02; }
