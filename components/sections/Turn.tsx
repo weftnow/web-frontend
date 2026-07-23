@@ -85,7 +85,7 @@ export function Turn() {
                 key={id}
               >
                 {media.heroRail.map((item, index) => (
-                  <div className={railClasses[index]} key={`${id}-${item.src}`}>
+                  <div className={railClasses[index % railClasses.length]} key={`${id}-${item.src}`}>
                     <MediaPlaceholder
                       className="h-full w-full"
                       media={item}

@@ -6,6 +6,7 @@ export type MediaAsset = {
   readonly height: number;
   readonly alt: string;
   readonly placeholder: boolean;
+  readonly type?: "image" | "video";
 };
 
 export function MediaPlaceholder({
@@ -23,16 +24,32 @@ export function MediaPlaceholder({
 }) {
   return (
     <figure className={`media-placeholder ${className}`.trim()}>
-      <Image
-        alt={media.alt}
-        className="h-full w-full object-cover"
-        height={media.height}
-        loading={loading}
-        priority={priority}
-        sizes={sizes}
-        src={media.src}
-        width={media.width}
-      />
+      {media.type === "video" ? (
+        <video
+          aria-label={media.alt}
+          autoPlay
+          className="h-full w-full object-cover"
+          height={media.height}
+          loop
+          muted
+          playsInline
+          preload={loading === "eager" ? "auto" : "metadata"}
+          width={media.width}
+        >
+          <source src={media.src} />
+        </video>
+      ) : (
+        <Image
+          alt={media.alt}
+          className="h-full w-full object-cover"
+          height={media.height}
+          loading={loading}
+          priority={priority}
+          sizes={sizes}
+          src={media.src}
+          width={media.width}
+        />
+      )}
     </figure>
   );
 }

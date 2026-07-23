@@ -3,7 +3,7 @@ import { content } from "./content";
 
 describe("placeholder media catalog", () => {
   test("contains the approved image-led page inventory", () => {
-    expect(content.media.heroRail).toHaveLength(5);
+    expect(content.media.heroRail).toHaveLength(7);
     expect(content.media.portraits).toHaveLength(3);
     expect(content.media.how).toHaveLength(3);
   });
