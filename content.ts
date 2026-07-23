@@ -250,7 +250,7 @@ export const content = {
     items: [
       {
         quote:
-          "Our attendees stopped asking when they could leave and started asking when the next one is.",
+          "As an organizer, the best part was seeing people stay after the activity ended. The matching didn’t feel forced, it just helped the right groups form naturally",
         name: "Placeholder Name",
         title: "Head of Events, Placeholder Co.",
       },
