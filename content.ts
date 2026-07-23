@@ -2,7 +2,7 @@ export const content = {
   media: {
     heroRail: [
       {
-        src: "/placeholders/weft/intake-preview.png",
+        src: "/placeholders/weft/matching-preview.png",
         width: 2340,
         height: 1560,
         alt: "Placeholder view of an attendee intake experience",
@@ -16,21 +16,21 @@ export const content = {
         placeholder: true,
       },
       {
-        src: "/placeholders/weft/reveal-preview.png",
+        src: "/placeholders/weft/matching-preview.png",
         width: 2340,
         height: 1560,
         alt: "Placeholder visual for a group reveal",
         placeholder: true,
       },
       {
-        src: "/placeholders/weft/dashboard-preview.png",
+        src: "/placeholders/weft/matching-preview.png",
         width: 2340,
         height: 1560,
         alt: "Placeholder view of an organizer dashboard",
         placeholder: true,
       },
       {
-        src: "/placeholders/weft/event-detail.png",
+        src: "/placeholders/weft/matching-preview.png",
         width: 2340,
         height: 1560,
         alt: "Placeholder detail from a branded event experience",
@@ -135,14 +135,16 @@ export const content = {
       { label: "Stories", href: "#stories" },
       { label: "FAQ", href: "#faq" },
     ],
-    cta: "Book a demo",
+    cta: "Try it!",
   },
 
   hero: {
     // Two-tone: `muted` renders in --ash and resolves last.
-    headline: [{ text: "Real matches at networking events.", muted: "", accent: "networking" }],
-    sub: "In that networking event there's someone you align with, somoene you need. Weft helps you find them",
-    ctaPrimary: "Book a demo",
+    headline: [
+      { text: "Matched on what matters, not your badge.", muted: "", accent: "your badge" },
+    ],
+    sub: "Weft matches attendees on their goals and values, not small talk. Finding the right people becomes the best part of the event.",
+    ctaPrimary: "Try it!",
     ctaSecondary: "See how it works",
     ycLabel: "Backed by Y Combinator",
   },
@@ -161,12 +163,12 @@ export const content = {
       {
         stat: "3",
         label:
-          "the number of people most attendees actually talk to — and they already knew all three.",
+          "the number of people most attendees actually talk to. They already knew all three.",
       },
       {
         stat: "0:14",
         label:
-          "how long a badge glance takes before the conversation is already deciding not to happen.",
+          "how long it takes to glance at a badge and decide the conversation isn't worth having.",
       },
       {
         stat: "1",
@@ -180,7 +182,7 @@ export const content = {
 
   turn: {
     line: [
-      { text: "So we built the thread that", muted: "pulls the right people together." },
+      { text: "So we built the thread that pulls", muted: "the people who actually belong." },
     ],
   },
 
@@ -190,18 +192,18 @@ export const content = {
     steps: [
       {
         n: "01",
-        title: "They tell us who they are",
-        body: "A two-minute prompt before the event — goals, expertise, what they're looking for, who they want to become. No forms that feel like homework.",
+        title: "They tell us what actually matters to them",
+        body: "A two-minute intake before the event, not a resume. We ask about their goals, expertise, values, and who they're hoping to meet, not just their job title.",
       },
       {
         n: "02",
         title: "The algorithm weaves the groups",
-        body: "Weft reads intent, not just industry. It forms small groups where every person is the reason someone else showed up — complementary, not identical.",
+        body: "Weft weighs goals, expertise, and values together, not just job titles or small talk. It forms small groups where every person is exactly who someone else came to meet.",
       },
       {
         n: "03",
         title: "The room rearranges itself",
-        body: "At the moment you choose, everyone learns their group. Strangers walk toward the exact people they came to meet.",
+        body: "At the moment you choose, everyone learns their group live, and strangers walk straight toward the exact people they came to meet.",
       },
     ],
   },
@@ -209,28 +211,28 @@ export const content = {
   reveal: {
     eyebrow: "The moment it clicks",
     headline: [{ text: "Four strangers.", muted: "One reason they're here." }],
-    body: "This is the part attendees post about. The reveal turns a room of nametags into the best conversation of their quarter — and turns your event into the one they clear their calendar for next year.",
-    // Placeholder stats — replace with real numbers before launch.
+    body: "This is the part attendees post about. The reveal turns a room of nametags into the best conversation of their quarter, because for once they were matched on their goals, expertise, and values, not just their industry.",
+    // Placeholder stats, replace with real numbers before launch.
     stats: [
       { value: 92, suffix: "%", label: "of matched attendees rate their group a 9 or 10" },
       { value: 3.4, suffix: "x", label: "more qualified conversations vs. open networking" },
       { value: 4.8, suffix: "/5", label: "average event rating after adding Weft" },
     ],
-    statsNote: "Placeholder metrics — replace in content.ts before launch.",
+    statsNote: "Placeholder metrics. Replace in content.ts before launch.",
     // The five avatars in the fan-out: [attendee, ...four matches]
     group: [
       { initials: "YOU", role: "You" },
       { initials: "AM", role: "The investor you needed" },
       { initials: "RK", role: "Your next hire" },
       { initials: "TS", role: "The operator two steps ahead" },
-      { initials: "JD", role: "The partner you didn't know to look for" },
+      { initials: "JD", role: "The friend you didn't expect to make" },
     ],
   },
 
   testimonials: {
     eyebrow: "Stories",
     headline: [{ text: "The events people", muted: "remember." }],
-    // Placeholder quotes and names — replace before launch.
+    // Placeholder quotes and names, replace before launch.
     items: [
       {
         quote:
@@ -258,8 +260,12 @@ export const content = {
     headline: [{ text: "The things", muted: "people ask." }],
     items: [
       {
+        q: "How is this different from matching by shared interests?",
+        a: "Two people who both like hiking might have nothing else in common. Weft looks past hobbies to what actually predicts a good conversation: goals, expertise, and values together. Then it builds small groups around that.",
+      },
+      {
         q: "How much does an attendee have to do beforehand?",
-        a: "About two minutes. A short intake captures goals, expertise, and who they want to meet. If they skip it, Weft still places them using whatever the organizer provides.",
+        a: "About two minutes. A short intake captures their goals, expertise, values, and who they're hoping to meet, not just their job title. If they skip it, Weft still places them using whatever the organizer provides.",
       },
       {
         q: "What size event does Weft work for?",
@@ -267,7 +273,7 @@ export const content = {
       },
       {
         q: "How does the matching actually decide?",
-        a: "Weft models intent and complementarity, not just shared industry. It optimizes for groups where each person is high-value to the others, then balances for diversity of perspective.",
+        a: "Weft models goals, expertise, and values together, not just shared industry or interests. It optimizes for groups where each person is genuinely glad to be there, then balances for enough difference to keep the conversation interesting.",
       },
       {
         q: "Do organizers get to see how it went?",
@@ -289,7 +295,7 @@ export const content = {
       email: "Work email",
       event: "What are you organizing?",
     },
-    cta: "Book a demo",
+    cta: "Book a call",
     wordmark: "weft",
     footerLinks: ["The problem", "How it works", "Stories", "FAQ"],
     copyright: "© 2026 Weft. All rights reserved.",

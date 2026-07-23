@@ -15,9 +15,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Weft — Networking that actually connects",
+  title: "Weft: Networking that actually connects",
   description:
-    "Weft is the AI matchmaking app for networking events. We find the people at your event who should be in a room together, and put them there.",
+    "Weft is AI matchmaking for professional events. We match attendees on their goals, expertise, and values, not just job titles or small talk, then put the right small groups in a room together.",
 };
 
 export default function RootLayout({

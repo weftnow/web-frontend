@@ -32,12 +32,12 @@ describe("placeholder media catalog", () => {
 test("uses the approved hero message", () => {
   expect(content.hero.headline).toEqual([
     {
-      text: "Real matches at networking events.",
+      text: "Matched on what matters, not your badge.",
       muted: "",
-      accent: "networking",
+      accent: "your badge",
     },
   ]);
   expect(content.hero.sub).toBe(
-    "In that networking event there's someone you align with, somoene you need. Weft helps you find them",
+    "Weft matches attendees on their goals, expertise, and values, not small talk. Finding the right people becomes the best part of the night.",
   );
 });

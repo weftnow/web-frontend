@@ -230,7 +230,7 @@ export const content = {
       { label: "Stories", href: "#stories" },
       { label: "FAQ", href: "#faq" },
     ],
-    cta: "Book a demo",
+    cta: "Try it!",
   },
 
   hero: {
@@ -240,7 +240,7 @@ export const content = {
       { text: "You will spend the night talking to", muted: "someone else." },
     ],
     sub: "Weft finds the four people at your event who should be in a room together — and puts them there.",
-    ctaPrimary: "Book a demo",
+    ctaPrimary: "Try it!",
     ctaSecondary: "See how it works",
     ycLabel: "Backed by Y Combinator",
   },
@@ -382,7 +382,7 @@ export const content = {
       email: "Work email",
       event: "What are you organizing?",
     },
-    cta: "Book a demo",
+    cta: "Try it!",
     wordmark: "weft",
     footerLinks: ["The problem", "How it works", "Stories", "FAQ"],
     copyright: "© 2026 Weft. All rights reserved.",

@@ -12,7 +12,7 @@ test("contact panel labels fields and avoids dead legal links", () => {
   expect(html).toContain('for="contact-event"');
   expect(html).toContain('id="contact-event"');
   expect(html).toContain(contentImageAlt);
-  expect(html).toContain('aria-label="Book a demo"');
+  expect(html).toContain('aria-label="Try it!"');
   expect(html).toContain("Privacy");
   expect(html).toContain("Terms");
   expect(html.includes('href="#"')).toBe(false);
