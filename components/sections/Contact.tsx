@@ -103,7 +103,7 @@ export function Contact() {
         <div className="mt-16 grid gap-8 border-t border-ink/12 py-8 md:grid-cols-[1fr_auto] md:items-end">
           <div className="grid gap-5">
             <a aria-label="Weft home" className="inline-flex items-center gap-2" href="#main-content">
-              <img alt="" className="footer-brand-mark" height={28} src="/icon.png" width={28} />
+              <img alt="" className="footer-brand-mark" height={28} src="/icon.svg" width={28} />
               <span className="font-display text-sm font-bold text-ink">weft</span>
             </a>
             <nav aria-label="Footer navigation" className="flex flex-wrap gap-x-6 gap-y-3">

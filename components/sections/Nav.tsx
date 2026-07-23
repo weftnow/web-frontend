@@ -53,7 +53,7 @@ export function Nav() {
         data-scrolled={scrolled}
       >
         <a aria-label="Weft home" className="nav-brand" href="#main-content">
-          <img alt="" className="nav-brand-mark" height={38} src="/icon.png" width={38} />
+          <img alt="" className="nav-brand-mark" height={38} src="/icon.svg" width={38} />
           <span className="font-display">weft</span>
         </a>
 
