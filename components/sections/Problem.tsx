@@ -66,7 +66,7 @@ export function Problem() {
               </div>
 
               <div>
-                <span className="font-display block text-6xl font-bold text-ember md:text-7xl">
+                <span className="font-display block text-2xl font-bold leading-snug text-ember sm:text-3xl md:text-4xl">
                   {beat.stat}
                 </span>
                 <p className="mt-3 max-w-md text-sm leading-relaxed text-paper/55 transition-[color,transform] duration-200 ease-out group-hover:translate-x-2 group-hover:text-paper/82 group-focus-visible:translate-x-2 group-focus-visible:text-paper/82">

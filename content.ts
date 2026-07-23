@@ -175,27 +175,23 @@ export const content = {
   },
 
   problem: {
-    eyebrow: "The room that didn't work",
+    eyebrow: "The networking that didn't work",
     headline: [{ text: "Everyone came to connect.", muted: "Almost no one did." }],
     beats: [
       {
-        stat: "3",
-        label:
-          "the number of people most attendees actually talk to. They already knew all three.",
+        stat: "Dozens of “networking” events.",
+        label: "People thirsty for connections.",
       },
       {
-        stat: "0:14",
-        label:
-          "how long it takes to glance at a badge and decide the conversation isn't worth having.",
+        stat: "Thousands of introductions.",
+        label: "LinkedIn profiles exchanged along the way in awkward experiences.",
       },
       {
-        stat: "1",
-        label:
-          "the lasting memory they leave with: a room that felt like work. That memory has your name on it.",
+        stat: "No real contacts. Nothing to remember.",
+        label: "More contacts in the pocket, still zero connections.",
       },
     ],
-    kicker:
-      "A forgettable event isn't neutral. It's the story your brand tells for the next twelve months.",
+    kicker: "Without real connections that lasts, your event becomes just another one",
   },
 
   turn: {
