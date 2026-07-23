@@ -33,11 +33,6 @@ export function MediaPlaceholder({
         src={media.src}
         width={media.width}
       />
-      {media.placeholder ? (
-        <figcaption className="media-placeholder-label">
-          Replaceable image
-        </figcaption>
-      ) : null}
     </figure>
   );
 }

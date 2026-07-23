@@ -3,16 +3,7 @@
 import { motion, useReducedMotion } from "motion/react";
 import { content } from "@/content";
 import { Eyebrow } from "@/components/ui/Eyebrow";
-import { MediaPlaceholder } from "@/components/ui/MediaPlaceholder";
 import { PremiumButton } from "@/components/ui/PremiumButton";
-
-const railClasses = [
-  "hero-media-card hero-media-card--one",
-  "hero-media-card hero-media-card--two",
-  "hero-media-card hero-media-card--three",
-  "hero-media-card hero-media-card--four",
-  "hero-media-card hero-media-card--five",
-] as const;
 
 const wordRevealDelay = 0.28;
 const characterRevealStagger = 0.035;
@@ -48,7 +39,7 @@ function getHeadlineWords(
 
 export function Hero() {
   const reduce = Boolean(useReducedMotion());
-  const { hero, media } = content;
+  const { hero } = content;
   const headlineWords = getHeadlineWords(hero.headline);
   const headline = headlineWords.map(({ word }) => word).join(" ");
   const characterCount = headlineWords.reduce(
@@ -117,7 +108,7 @@ export function Hero() {
         </motion.p>
 
         <motion.div className="hero-actions hero-actions--initial" initial={false}>
-          <PremiumButton href="#contact" tone="ink">
+          <PremiumButton href="#contact" tone="ember">
             {hero.ctaPrimary}
           </PremiumButton>
           {/*
@@ -130,25 +121,6 @@ export function Hero() {
 
 
       </div>
-
-      <motion.div
-        aria-label="Replaceable Weft experience imagery"
-        animate={{ opacity: 1, transform: "translate3d(0, 0, 0)" }}
-        className="hero-media-rail"
-        initial={reduce ? false : { opacity: 0, transform: "translate3d(0, 48px, 0)" }}
-        transition={{ delay: reduce ? 0 : supportingDelay + 0.3, duration: 0.68, ease: heroEase }}
-      >
-        {media.heroRail.map((item, index) => (
-          <div className={railClasses[index]} key={item.src}>
-            <MediaPlaceholder
-              className="h-full w-full"
-              media={item}
-              priority={index < 3}
-              sizes="(max-width: 640px) 70vw, (max-width: 1024px) 42vw, 28vw"
-            />
-          </div>
-        ))}
-      </motion.div>
     </section>
   );
 }

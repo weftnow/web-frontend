@@ -102,6 +102,10 @@ export function Contact() {
 
         <div className="mt-16 grid gap-8 border-t border-ink/12 py-8 md:grid-cols-[1fr_auto] md:items-end">
           <div className="grid gap-5">
+            <a aria-label="Weft home" className="inline-flex items-center gap-2" href="#main-content">
+              <img alt="" className="footer-brand-mark" height={28} src="/icon.png" width={28} />
+              <span className="font-display text-sm font-bold text-ink">weft</span>
+            </a>
             <nav aria-label="Footer navigation" className="flex flex-wrap gap-x-6 gap-y-3">
               {nav.links.map((link) => (
                 <a
@@ -130,10 +134,6 @@ export function Contact() {
       </div>
 
       <div className="relative mx-auto mt-2 flex max-w-[100rem] justify-center overflow-hidden pt-10">
-        <span aria-hidden="true" className="absolute left-[-8%] top-[45%] h-px w-[116%] -rotate-6 bg-ember/25" />
-        <span aria-hidden="true" className="absolute left-[-8%] top-[56%] h-px w-[116%] rotate-5 bg-signal/20" />
-        <span aria-hidden="true" className="absolute left-[-8%] top-[68%] h-px w-[116%] -rotate-2 bg-ember/15" />
-        <span aria-hidden="true" className="absolute left-[-8%] top-[78%] h-px w-[116%] rotate-3 bg-signal/15" />
         <span className="font-display relative block select-none text-[24vw] font-bold leading-[0.72] text-ink/[0.07]">
           {contact.wordmark}
         </span>
