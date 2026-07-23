@@ -18,9 +18,9 @@ export function WeaveCanvas() {
       preserveAspectRatio="none"
       viewBox="0 0 100 100"
     >
-      {/* Ember thread — starts left, weaves to right past the turn */}
+      {/* Ember thread — starts near the left edge, weaves to right past the turn */}
       <motion.path
-        d="M 20 0 C 20 25, 20 35, 50 50 C 80 65, 80 75, 80 100"
+        d="M 4 0 C 4 35, 4 49, 50 70 C 96 79, 96 85, 96 100"
         fill="none"
         stroke="#F4511E"
         strokeWidth="0.28"
@@ -28,9 +28,9 @@ export function WeaveCanvas() {
         style={{ pathLength: reduce ? staticDraw : draw }}
         opacity={0.32}
       />
-      {/* Signal thread — mirror image, crosses the ember at the turn (~50%) */}
+      {/* Signal thread — mirror image, crosses the ember later (~70%) */}
       <motion.path
-        d="M 80 0 C 80 25, 80 35, 50 50 C 20 65, 20 75, 20 100"
+        d="M 96 0 C 96 35, 96 49, 50 70 C 4 79, 4 85, 4 100"
         fill="none"
         stroke="#0090DE"
         strokeWidth="0.28"

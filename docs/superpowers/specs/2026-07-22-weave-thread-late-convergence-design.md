@@ -1,37 +1,39 @@
-# Weave Thread Late Convergence — Design
+# Weave Thread Edge Start + Slower Crossing — Design
 
 ## Problem
 
 `WeaveCanvas` draws two decorative SVG threads (ember and signal) that trace
-their `pathLength` in lockstep with page scroll. Today both threads cross at
-the exact vertical middle of the viewBox (`x=50, y=50`), which lands the
-crossing motif over mid-page content and can compete with it visually.
+their `pathLength` in lockstep with page scroll. Two issues:
+
+1. The threads start at `x=20` / `x=80` in the `0 0 100 100` viewBox —
+   noticeably inset from the actual screen edges rather than hugging them.
+2. The threads cross at the vertical middle of their path (`y=50`), which
+   is reached after only ~50% of scroll progress, since `pathLength` is
+   drawn linearly with `scrollYProgress`.
 
 ## Goal
 
-Move the crossing so it happens late in the scroll — around `y≈82` in the
-`0 0 100 100` viewBox (roughly 80–85% of total scroll progress) — and keep
-each thread close to its starting edge (`x=20` for ember, `x=80` for signal)
-through the rest of the page. The threads should still cross (swap sides),
-matching the current motif, just relocated near the end.
+1. Start each thread closer to the true left/right screen edges.
+2. Require more scroll before the threads cross — i.e. push the crossing
+   point later along the path so more of the page needs to be scrolled
+   before the "growing" threads meet.
 
 ## Approach
 
 Reshape the two cubic paths in `components/ui/WeaveCanvas.tsx`:
 
-- Each thread stays flat against its starting `x` (20 or 80) from `y=0`
-  through roughly `y=64`, so it doesn't visually intrude on mid-page content.
-- From `y≈64` to the crossing at `y≈82`, the curve bends inward to `x=50`,
-  with control points pushed toward the tail of that span so the bend reads
-  as a late, quick "coming together" rather than a gradual drift.
-- From the crossing (`y≈82`) to `y=100`, the curve mirrors that bend outward
-  to the opposite edge (`x=80` for ember, `x=20` for signal), finishing at
-  the bottom of the viewBox — same divergence motif as today, just
-  compressed into the last ~18 units instead of the last ~50.
+- Move the starting `x` from `20`/`80` to `4`/`96`, closer to the viewBox
+  (and thus screen) edges.
+- Move the crossing point from `(50, 50)` to `(50, 70)`, keeping the same
+  relative control-point ratios as the original curve (scaled to the new
+  segment spans) so the curve shape/feel is preserved, just later and
+  wider. Since `pathLength` draws linearly with scroll, moving the cross
+  from the 50%-drawn mark to the 70%-drawn mark means ~70% scroll is now
+  needed to reach it, instead of ~50%.
 
-No changes to `pathLength`/`useTransform` scroll-drive logic, stroke styling,
-opacity, or the `prefers-reduced-motion` static fallback — only the two `d`
-attribute strings change.
+No changes to `pathLength`/`useTransform` scroll-drive logic, stroke
+styling, opacity, or the `prefers-reduced-motion` static fallback — only
+the two `d` attribute strings change.
 
 ## Scope
 
@@ -41,7 +43,7 @@ attribute strings change.
 
 ## Verification
 
-Visual check in the dev server at desktop width: scroll through the full
-page and confirm the threads stay pinned near their edges through the
-content sections, converge and cross only near the bottom of the page, and
-that reduced-motion mode still renders the static full-length paths.
+Visual check in the dev server at desktop width: scroll through the page
+and confirm the threads now originate close to the left/right screen
+edges, and that noticeably more scrolling is required before they cross
+near `y=70`, compared to the previous mid-page crossing.

@@ -15,7 +15,7 @@ export function Problem() {
     <SectionShell
       id="problem"
       act="dark"
-      className="scroll-mt-20 before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:h-48 before:bg-gradient-to-b before:from-bone before:to-transparent after:pointer-events-none after:absolute after:inset-x-0 after:bottom-0 after:h-48 after:bg-gradient-to-t after:from-bone after:to-transparent md:scroll-mt-24"
+      className="problem-tonal-transition scroll-mt-20 md:scroll-mt-24"
     >
       <div className="flex flex-col items-start gap-4">
         <span className="font-meta inline-flex items-center gap-2 rounded-full bg-paper/10 px-3 py-1 text-xs text-paper/70">
@@ -39,6 +39,7 @@ export function Problem() {
           <MediaPlaceholder
             className="aspect-[4/5] h-full min-h-[32rem] rounded-[2rem] border-[8px] border-paper/10 shadow-[var(--shadow-media)]"
             media={media.problem}
+            priority
             sizes="(max-width: 1023px) calc(100vw - 48px), 52vw"
           />
         </motion.div>
