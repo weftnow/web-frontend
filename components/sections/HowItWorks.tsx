@@ -6,6 +6,7 @@ import { SectionShell } from "@/components/ui/SectionShell";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { MediaPlaceholder } from "@/components/ui/MediaPlaceholder";
+import { WeaveLoader } from "@/components/ui/WeaveLoader";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { clampPreviewIndex } from "@/lib/interactions";
 import { fadeUp } from "@/lib/motion";
@@ -14,7 +15,9 @@ export function HowItWorks() {
   const reduce = Boolean(useReducedMotion());
   const { how, media } = content;
   const [activeStep, setActiveStep] = useState(0);
-  const activeMedia = media.how[clampPreviewIndex(activeStep, media.how.length)];
+  const activeIndex = clampPreviewIndex(activeStep, media.how.length);
+  const activeMedia = media.how[activeIndex];
+  const activeStepData = how.steps[activeIndex];
 
   const selectStep = (index: number) => {
     setActiveStep(clampPreviewIndex(index, media.how.length));
@@ -69,12 +72,18 @@ export function HowItWorks() {
                   {step.body}
                 </p>
 
-                <MediaPlaceholder
-                  className="col-span-2 mt-7 aspect-[4/3] w-full rounded-[1.5rem] border-[6px] border-paper shadow-[var(--shadow-media)] xl:hidden"
-                  loading={index === 0 ? "eager" : undefined}
-                  media={media.how[index]}
-                  sizes="calc(100vw - 48px)"
-                />
+                {"computing" in step ? (
+                  <div className="relative col-span-2 mt-7 aspect-[4/3] w-full overflow-hidden rounded-[1.5rem] border-[6px] border-paper bg-paper shadow-[var(--shadow-media)] xl:hidden">
+                    <WeaveLoader phrases={step.computing} />
+                  </div>
+                ) : (
+                  <MediaPlaceholder
+                    className="col-span-2 mt-7 aspect-[4/3] w-full rounded-[1.5rem] border-[6px] border-paper shadow-[var(--shadow-media)] xl:hidden"
+                    loading={index === 0 ? "eager" : undefined}
+                    media={media.how[index]}
+                    sizes="calc(100vw - 48px)"
+                  />
+                )}
               </motion.button>
             );
           })}
@@ -95,15 +104,19 @@ export function HowItWorks() {
                 className="absolute inset-0"
                 exit={reduce ? { opacity: 0 } : { clipPath: "inset(8% 0 0 0)", filter: "blur(2px)", opacity: 0 }}
                 initial={reduce ? false : { clipPath: "inset(0 0 8% 0)", filter: "blur(2px)", opacity: 0 }}
-                key={activeMedia.src}
+                key={activeIndex}
                 transition={{ duration: reduce ? 0.01 : 0.24, ease: [0.23, 1, 0.32, 1] }}
               >
-                <MediaPlaceholder
-                  className="h-full w-full"
-                  loading={activeStep === 0 ? "eager" : undefined}
-                  media={activeMedia}
-                  sizes="(max-width: 1023px) 34vw, 30vw"
-                />
+                {activeStepData && "computing" in activeStepData ? (
+                  <WeaveLoader phrases={activeStepData.computing} />
+                ) : (
+                  <MediaPlaceholder
+                    className="h-full w-full"
+                    loading={activeStep === 0 ? "eager" : undefined}
+                    media={activeMedia}
+                    sizes="(max-width: 1023px) 34vw, 30vw"
+                  />
+                )}
               </motion.div>
             </AnimatePresence>
           </div>

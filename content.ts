@@ -87,11 +87,12 @@ export const content = {
     },
     how: [
       {
-        src: "/placeholders/weft/intake-preview.png",
-        width: 2340,
-        height: 1560,
-        alt: "Placeholder preview of attendee intake",
-        placeholder: true,
+        src: "/placeholders/weft/how-it-works-1.mp4",
+        width: 1440,
+        height: 1080,
+        alt: "Clip of attendee intake before the event",
+        placeholder: false,
+        type: "video",
       },
       {
         src: "/placeholders/weft/matching-preview.png",
@@ -101,11 +102,12 @@ export const content = {
         placeholder: true,
       },
       {
-        src: "/placeholders/weft/reveal-preview.png",
-        width: 2340,
-        height: 1560,
-        alt: "Placeholder preview of attendee reveal",
-        placeholder: true,
+        src: "/placeholders/weft/how-it-works-3.webm",
+        width: 1440,
+        height: 1080,
+        alt: "Clip of the room rearranging as groups are revealed",
+        placeholder: false,
+        type: "video",
       },
     ],
     outcome: {
@@ -213,6 +215,7 @@ export const content = {
         n: "02",
         title: "The algorithm weaves the groups",
         body: "Weft weighs goals, expertise, and values together, not just job titles or small talk. It forms small groups where every person is exactly who someone else came to meet.",
+        computing: ["Determine your personality…", "Finding you the best match…"],
       },
       {
         n: "03",
