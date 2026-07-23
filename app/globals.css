@@ -73,7 +73,7 @@ a {
   border-radius: 999px;
   padding: 0.86rem 1.9rem;
   font-size: 0.95rem;
-  font-weight: 600;
+  font-weight: 700;
   box-shadow: var(--shadow-premium);
   transition: transform 140ms var(--ease-out-ui), background-color 180ms ease,
     color 180ms ease;
@@ -88,7 +88,11 @@ a {
   outline-offset: 4px;
 }
 
-.premium-cta-label { display: inline-flex; line-height: 1.25; }
+.premium-cta-label {
+  display: inline-flex;
+  line-height: 1.25;
+  -webkit-text-stroke: 0.4px currentColor;
+}
 .premium-cta-glyph { display: block; height: 1.25em; overflow: hidden; }
 .premium-cta-glyph-track {
   display: flex;
@@ -267,8 +271,8 @@ a {
 
 .nav-brand-mark {
   display: block;
-  width: 3.4rem;
-  height: 3.4rem;
+  width: 2.4rem;
+  height: 2.4rem;
   object-fit: contain;
   animation: nav-brand-spin 4s linear infinite;
 }
@@ -332,7 +336,8 @@ a {
   padding: 0 1.15rem;
   color: var(--color-paper);
   font-size: 0.72rem;
-  font-weight: 600;
+  font-weight: 700;
+  -webkit-text-stroke: 0.4px currentColor;
   transition: transform 140ms var(--ease-out-ui), background-color 180ms ease;
 }
 .nav-cta:active { transform: scale(0.97); }
@@ -505,7 +510,7 @@ a {
   }
   .nav-roll-track { transition: transform 200ms var(--ease-out-ui); }
   .nav-link:hover .nav-roll-track { transform: translate3d(0, -50%, 0); }
-  .nav-cta:hover { background: color-mix(in srgb, var(--color-ink) 88%, var(--color-ember)); transform: translate3d(0, -1px, 0); }
+  .nav-cta:hover { background: color-mix(in srgb, var(--color-ember) 88%, var(--color-ink)); transform: translate3d(0, -1px, 0); }
   .turn-media-card {
     transition: transform 320ms var(--ease-out-ui), filter 260ms ease;
   }
