@@ -2,9 +2,9 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Turn the hero images into a seamless, slowly gliding carousel whose hovered card returns to an upright neutral pose without pausing the track.
+**Goal:** Turn the hero images into a seamless, slowly gliding carousel with larger, borderless cards sharing the reference's diagonal skew; hovering a card returns it to a neutral pose without pausing the track.
 
-**Architecture:** `Hero` will render two equal visual media sets: one accessible source set and one decorative `aria-hidden` duplicate. CSS will animate their shared track by exactly one set width, while individual cards retain independent rotation and vertical-offset longhands so hover can neutralize only the card.
+**Architecture:** `Hero` will render two equal visual media sets: one accessible source set and one decorative `aria-hidden` duplicate. CSS will animate their shared track by exactly one set width, while each card uses a common `skewX(10deg) skewY(10deg)` transform that hover can temporarily neutralize.
 
 **Tech Stack:** Next.js 16.2.11 App Router, React 19.2.4, TypeScript, Tailwind CSS 4 global stylesheet, Motion 12, Bun test runner.
 
@@ -16,7 +16,8 @@
 - Keep `Hero` as the existing Client Component; do not move client behavior into `app/page.tsx`.
 - The duplicate visual media set must be `aria-hidden`; source images retain their current semantics.
 - Carousel movement is linear, slow, seamless, and must continue while a card is hovered.
-- On a fine pointer hover, only the active card becomes `rotate(0deg)` with zero vertical offset.
+- Every card uses `skewX(10deg) skewY(10deg)`, is larger, and has no visible white frame.
+- On a fine pointer hover, only the active card removes that skew.
 - In `prefers-reduced-motion`, do not animate the track and show a static centered arrangement.
 - Prefix every shell command with `rtk`.
 - Leave unrelated modified and untracked workspace files untouched.

@@ -14,7 +14,7 @@ Present the hero imagery as a broad, tilted, continuously gliding gallery inspir
 
 The visible gallery is a clipped viewport containing a track with the five supplied cards followed by an identical, decorative copy. The duplicate is hidden from assistive technology. A linear CSS animation moves the track horizontally by exactly one source-set width, creating a seamless loop when it restarts.
 
-Each source card retains its current deliberate rotation and slight vertical offset. On a fine pointer hover, the hovered card transitions to `rotate(0deg)` and a zero vertical offset. The track animation does not pause or change speed. Keyboard focus follows the same neutral-card treatment where applicable.
+Every card uses the same diagonal geometry as the supplied reference: `skewX(10deg) skewY(10deg)`. Cards are larger than the preceding design and have no visible white border or frame. On a fine pointer hover, only the hovered card transitions to an unskewed neutral state. The track animation does not pause or change speed.
 
 At narrow viewports, the rail remains oversized and cropped at the edges, with card sizing and spacing reduced proportionally. The carousel does not require manual controls because the requested behavior is decorative, not a browseable content carousel.
 
