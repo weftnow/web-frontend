@@ -14,3 +14,13 @@ test("premium CTA keeps one accessible label while rendering rolling glyphs", ()
   expect(html).toContain("M 14.619 6.75");
   expect(html).toContain("M 14.185 2.395");
 });
+
+test("premium button reflects a disabled state in markup", () => {
+  const html = renderToStaticMarkup(
+    <PremiumButton tone="ink" disabled>
+      Next
+    </PremiumButton>,
+  );
+  expect(html).toContain("disabled");
+  expect(html).toContain("pointer-events-none");
+});

@@ -7,6 +7,8 @@ export type PremiumButtonProps = {
   tone?: "ink" | "ember" | "paper";
   className?: string;
   type?: "button" | "submit";
+  onClick?: () => void;
+  disabled?: boolean;
 };
 
 function RollingLabel({ label }: { label: string }) {
@@ -33,8 +35,11 @@ export function PremiumButton({
   tone = "ink",
   className = "",
   type = "button",
+  onClick,
+  disabled = false,
 }: PremiumButtonProps) {
-  const buttonClass = `premium-cta premium-cta--${tone} ${className}`.trim();
+  const buttonClass =
+    `premium-cta premium-cta--${tone} ${disabled ? "opacity-40 pointer-events-none" : ""} ${className}`.trim();
   const label = <RollingLabel label={children} />;
 
   return (
@@ -56,7 +61,13 @@ export function PremiumButton({
           {label}
         </a>
       ) : (
-        <button aria-label={children} className={buttonClass} type={type}>
+        <button
+          aria-label={children}
+          className={buttonClass}
+          disabled={disabled}
+          onClick={onClick}
+          type={type}
+        >
           {label}
         </button>
       )}
