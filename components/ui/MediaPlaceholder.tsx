@@ -15,23 +15,26 @@ export function MediaPlaceholder({
   loading,
   sizes,
   priority = false,
+  controls = false,
 }: {
   media: MediaAsset;
   className?: string;
   loading?: "eager" | "lazy";
   sizes: string;
   priority?: boolean;
+  controls?: boolean;
 }) {
   return (
     <figure className={`media-placeholder ${className}`.trim()}>
       {media.type === "video" ? (
         <video
           aria-label={media.alt}
-          autoPlay
+          autoPlay={!controls}
           className="h-full w-full object-cover"
+          controls={controls}
           height={media.height}
-          loop
-          muted
+          loop={!controls}
+          muted={!controls}
           playsInline
           preload={loading === "eager" ? "auto" : "metadata"}
           width={media.width}
