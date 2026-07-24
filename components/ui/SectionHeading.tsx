@@ -20,7 +20,7 @@ export function SectionHeading({
   return (
     <div className="section-heading-mask">
       <Tag
-        className={`font-display text-balance ${className}`.trim()}
+        className={`font-display font-semibold text-balance ${className}`.trim()}
         initial={
           animateOnScroll
             ? { opacity: 0, transform: "translate3d(0, 24px, 0)" }

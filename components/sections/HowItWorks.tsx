@@ -30,7 +30,7 @@ export function HowItWorks() {
         <SectionHeading
           as="h2"
           lines={how.headline}
-          className="text-4xl text-ink md:text-6xl"
+          className="text-4xl text-ink md:text-5xl"
         />
       </div>
 
