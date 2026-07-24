@@ -28,6 +28,8 @@ export function Testimonials() {
   const { media, testimonials } = content;
   const items = testimonials.items as readonly TestimonialItem[];
   const feature = testimonials.items[0];
+  const railItems = items.slice(1);
+  const railAvatars = media.testimonialAvatars.slice(1);
   const viewportRef = useRef<HTMLDivElement>(null);
 
   const scrollToDirection = (direction: 1 | -1) => {
@@ -80,6 +82,9 @@ export function Testimonials() {
               <p className="max-w-xl font-display text-2xl leading-snug lg:text-3xl">
                 &ldquo;{feature.quote}&rdquo;
               </p>
+              <p className="font-meta mt-4 text-[11px] tracking-[0.08em] text-paper/72">
+                {feature.name} — {feature.title}
+              </p>
             </div>
           </article>
 
@@ -97,9 +102,14 @@ export function Testimonials() {
               sizes="calc(100vw - 3rem)"
             />
             <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_32%,rgba(18,18,18,0.86)_100%)]" />
-            <p className="absolute inset-x-0 bottom-0 p-6 font-display text-xl leading-snug text-paper">
-              &ldquo;{feature.quote}&rdquo;
-            </p>
+            <div className="absolute inset-x-0 bottom-0 p-6 text-paper">
+              <p className="font-display text-xl leading-snug">
+                &ldquo;{feature.quote}&rdquo;
+              </p>
+              <p className="font-meta mt-3 text-[11px] tracking-[0.08em] text-paper/72">
+                {feature.name} — {feature.title}
+              </p>
+            </div>
           </article>
 
           <OutcomeList compact outcomes={testimonials.outcomes} />
@@ -123,10 +133,10 @@ export function Testimonials() {
 
         <div className="testimonial-rail-viewport" ref={viewportRef}>
           <div className="testimonial-rail-track">
-            {items.map((story, index) => (
+            {railItems.map((story, index) => (
               <TestimonialCard
                 key={story.type === "quote" ? story.quote : story.video.src}
-                media={media.testimonialAvatars[index]}
+                media={railAvatars[index]}
                 story={story}
               />
             ))}

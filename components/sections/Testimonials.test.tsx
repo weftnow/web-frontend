@@ -32,5 +32,5 @@ test("testimonials renders an arrow-controlled review rail", () => {
   expect(html.includes("testimonial-rail-card--wide")).toBe(false);
 
   const cardMatches = html.match(/data-testimonial-card="true"/g) ?? [];
-  expect(cardMatches).toHaveLength(5);
+  expect(cardMatches).toHaveLength(4);
 });
