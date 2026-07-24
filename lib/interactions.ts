@@ -38,3 +38,27 @@ export function clampPreviewIndex(index: number, count: number) {
   if (count < 1) return 0;
   return Math.min(Math.max(index, 0), count - 1);
 }
+
+export function getTestimonialScrollTarget({
+  direction,
+  scrollLeft,
+  maxScroll,
+  step,
+}: {
+  direction: 1 | -1;
+  scrollLeft: number;
+  maxScroll: number;
+  step: number;
+}): number {
+  const WRAP_EPSILON = 4;
+
+  if (direction === 1 && scrollLeft >= maxScroll - WRAP_EPSILON) {
+    return 0;
+  }
+
+  if (direction === -1 && scrollLeft <= WRAP_EPSILON) {
+    return maxScroll;
+  }
+
+  return Math.min(Math.max(scrollLeft + step * direction, 0), maxScroll);
+}

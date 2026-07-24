@@ -4,6 +4,7 @@ import {
   getNextOpenIndex,
   getPortraitDisclosureState,
   getPortraitTransforms,
+  getTestimonialScrollTarget,
   PORTRAIT_SPREAD_TRANSFORMS,
   PORTRAIT_STACKED_TRANSFORMS,
   togglePortraitExpanded,
@@ -59,5 +60,31 @@ describe("one-open disclosure state", () => {
 
   test("closes the active row", () => {
     expect(getNextOpenIndex(2, 2)).toBeNull();
+  });
+});
+
+describe("testimonial rail scroll target", () => {
+  test("advances by one card", () => {
+    expect(
+      getTestimonialScrollTarget({ direction: 1, scrollLeft: 0, maxScroll: 900, step: 300 }),
+    ).toBe(300);
+  });
+
+  test("wraps to the start when advancing past the last card", () => {
+    expect(
+      getTestimonialScrollTarget({ direction: 1, scrollLeft: 900, maxScroll: 900, step: 300 }),
+    ).toBe(0);
+  });
+
+  test("wraps to the end when reversing past the first card", () => {
+    expect(
+      getTestimonialScrollTarget({ direction: -1, scrollLeft: 0, maxScroll: 900, step: 300 }),
+    ).toBe(900);
+  });
+
+  test("steps back by one card", () => {
+    expect(
+      getTestimonialScrollTarget({ direction: -1, scrollLeft: 600, maxScroll: 900, step: 300 }),
+    ).toBe(300);
   });
 });
