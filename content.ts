@@ -273,37 +273,37 @@ export const content = {
       {
         type: "quote",
         quote:
-          "The best part was seeing people stay do not want to leave even after the event ended",
-        name: "Placeholder Name",
-        title: "Head of Events, Placeholder Co.",
+        "The best part was seeing people stay do not want to leave even after the event ended",
+        name: "Alissa Ku",
+        title: "Head of Events, Selina Indonesia",
       },
       {
         type: "quote",
         quote:
-          "Weft did in one evening what our community usually takes six months of Slack to do.",
-        name: "Placeholder Name",
-        title: "Community Lead, Placeholder Co.",
+          "Weft did in one evening what I hadn't been able in a year building my community",
+        name: "Typhaine Morvan",
+        title: "CEO Bali Exception Sales",
       },
       {
         type: "quote",
         quote:
           "The reveal moment got a genuine gasp. I have never seen a networking session do that.",
-        name: "Placeholder Name",
-        title: "Founder, Placeholder Co.",
+        name: "Nate Nwajei",
+        title: "Operations @ Arkadia",
       },
       {
         type: "quote",
         quote:
           "People left with conversations they were still talking about the next day.",
-        name: "Placeholder Name",
-        title: "Program Director, Placeholder Co.",
+        name: "Ayu Sudana",
+        title: "Founder @ Uttama hospitality.",
       },
       {
         type: "quote",
         quote:
           "It made a big room feel intentional from the very first introduction.",
-        name: "Placeholder Name",
-        title: "Experience Lead, Placeholder Co.",
+        name: "Ronaldo Orlovskyi",
+        title: "CEO @ Bali Nexus Investment Partners",
       },
     ],
   },
