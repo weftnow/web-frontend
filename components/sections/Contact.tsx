@@ -2,13 +2,11 @@
 
 import { content } from "@/content";
 import { Eyebrow } from "@/components/ui/Eyebrow";
-import { MediaPlaceholder } from "@/components/ui/MediaPlaceholder";
 import { PremiumButton } from "@/components/ui/PremiumButton";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 export function Contact() {
-  const { contact, media, nav, reveal } = content;
-  const proof = reveal.stats[0];
+  const { contact, nav } = content;
 
   return (
     <footer
@@ -16,44 +14,18 @@ export function Contact() {
       className="relative z-10 overflow-hidden bg-bone px-6 pt-28 md:px-10 md:pt-40"
     >
       <div className="mx-auto w-full max-w-6xl">
-        <div className="grid overflow-hidden rounded-[2rem] bg-paper shadow-[var(--shadow-media)] lg:grid-cols-[minmax(320px,0.82fr)_minmax(0,1.18fr)] lg:rounded-[2.5rem]">
-          <div className="relative min-h-[380px] overflow-hidden lg:min-h-[720px]">
-            <MediaPlaceholder
-              className="absolute inset-0 h-full w-full"
-              media={media.contact}
-              sizes="(max-width: 1023px) 100vw, 480px"
-            />
-            <div
-              aria-hidden="true"
-              className="absolute inset-0 bg-[linear-gradient(180deg,rgba(18,18,18,0.04)_20%,rgba(18,18,18,0.88)_100%)]"
-            />
-            <div className="absolute inset-x-0 bottom-0 p-7 text-paper sm:p-9 lg:p-10">
-              <p className="font-meta text-[10px] text-paper/58">Outcome proof</p>
-              <p className="mt-5 font-display text-5xl font-bold tabular-nums sm:text-6xl">
-                {proof.value}
-                {proof.suffix}
-              </p>
-              <p className="mt-3 max-w-xs text-sm leading-relaxed text-paper/76">
-                {proof.label}
-              </p>
-              <p className="font-meta mt-6 max-w-xs text-[9px] leading-relaxed text-paper/48">
-                {reveal.statsNote}
-              </p>
-            </div>
-          </div>
+        <div className="mx-auto flex max-w-2xl flex-col items-center gap-4 text-center">
+          <Eyebrow>{contact.eyebrow}</Eyebrow>
+          <SectionHeading
+            as="h2"
+            lines={contact.headline}
+            className="text-4xl text-ink md:text-5xl"
+          />
+        </div>
 
-          <div className="px-7 py-12 sm:px-10 lg:px-14 lg:py-16 xl:px-16">
-            <div className="flex flex-col items-start gap-4">
-              <Eyebrow>{contact.eyebrow}</Eyebrow>
-              <SectionHeading
-                as="h2"
-                lines={contact.headline}
-                className="max-w-2xl text-4xl text-ink md:text-5xl"
-              />
-              <p className="mt-1 max-w-md text-base leading-relaxed text-ink/62">
-                {contact.body}
-              </p>
-            </div>
+        <div className="mt-12 grid gap-5 lg:grid-cols-[minmax(0,1.28fr)_minmax(280px,0.72fr)] lg:items-stretch">
+          <div className="rounded-[2rem] bg-paper px-7 py-12 shadow-[var(--shadow-media)] sm:px-10 lg:px-14 lg:py-16 xl:px-16">
+            <p className="max-w-md text-base leading-relaxed text-ink/62">{contact.body}</p>
 
             <form
               className="mt-10 grid gap-6"
@@ -98,6 +70,12 @@ export function Contact() {
               </div>
             </form>
           </div>
+
+          <aside aria-label="Contact details" className="grid content-start gap-4 lg:gap-5">
+            {contact.links.map((item) => (
+              <ContactLink item={item} key={item.label} />
+            ))}
+          </aside>
         </div>
 
         <div className="mt-16 grid gap-8 border-t border-ink/12 py-8 md:grid-cols-[1fr_auto] md:items-end">
@@ -139,6 +117,36 @@ export function Contact() {
         </span>
       </div>
     </footer>
+  );
+}
+
+function ContactLink({
+  item,
+}: {
+  item: (typeof content.contact.links)[number];
+}) {
+  return (
+    <a
+      aria-label={item.label}
+      className="group grid min-h-28 grid-cols-[3.25rem_1fr_auto] items-center gap-4 rounded-[1.75rem] bg-paper px-6 py-5 text-ink shadow-[var(--shadow-media)] transition-[transform,background-color] duration-200 hover:-translate-y-0.5 hover:bg-white focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-signal sm:px-7"
+      href={item.href}
+      rel={item.external ? "noreferrer" : undefined}
+      target={item.external ? "_blank" : undefined}
+    >
+      <span
+        aria-hidden="true"
+        className="grid h-11 w-11 place-items-center rounded-full bg-ink text-sm font-bold tracking-[-0.08em] text-paper"
+      >
+        {item.mark}
+      </span>
+      <span className="grid gap-1">
+        <span className="font-meta text-[9px] text-ink/42">{item.label}</span>
+        <span className="text-sm font-semibold text-ink sm:text-base">{item.value}</span>
+      </span>
+      <span aria-hidden="true" className="text-lg text-ink/35 transition-transform duration-200 group-hover:translate-x-0.5">
+        ↗
+      </span>
+    </a>
   );
 }
 
