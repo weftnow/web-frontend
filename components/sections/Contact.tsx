@@ -11,9 +11,9 @@ export function Contact() {
   return (
     <footer
       id="contact"
-      className="relative z-10 overflow-hidden bg-bone px-6 pt-28 md:px-10 md:pt-40"
+      className="relative overflow-hidden bg-bone px-6 pt-28 md:px-10 md:pt-40"
     >
-      <div className="mx-auto w-full max-w-6xl">
+      <div className="relative z-10 mx-auto w-full max-w-6xl">
         <div className="mx-auto flex max-w-2xl flex-col items-center gap-4 text-center">
           <Eyebrow>{contact.eyebrow}</Eyebrow>
           <SectionHeading
