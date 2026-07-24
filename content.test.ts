@@ -60,3 +60,29 @@ test("every testimonial declares its content type", () => {
     content.testimonials.items.every((item) => item.type === "quote"),
   ).toBe(true);
 });
+
+describe("compatibility test content", () => {
+  test("has exactly three questions", () => {
+    expect(content.compatibilityTest.questions).toHaveLength(3);
+  });
+
+  test("questions declare valid select kinds and options", () => {
+    for (const q of content.compatibilityTest.questions) {
+      expect(["single", "multi"]).toContain(q.kind);
+      expect(q.options.length).toBeGreaterThanOrEqual(2);
+      expect(q.id).toBeTruthy();
+    }
+  });
+
+  test("result exposes shareable archetype stats", () => {
+    const r = content.compatibilityTest.result;
+    expect(r.archetype).toBeTruthy();
+    expect(r.values.length).toBeGreaterThan(0);
+    expect(r.stats.every((s) => s.value >= 0 && s.value <= 100)).toBe(true);
+    expect(r.shareUrl).toContain("weft");
+  });
+
+  test("loader supplies multiple phrases", () => {
+    expect(content.compatibilityTest.loaderPhrases.length).toBeGreaterThan(2);
+  });
+});

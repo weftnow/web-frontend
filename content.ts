@@ -383,6 +383,72 @@ export const content = {
     footerLinks: ["The problem", "How it works", "Stories", "FAQ"],
     copyright: "© 2026 Weft. All rights reserved.",
   },
+  compatibilityTest: {
+    intro: {
+      eyebrow: "Compatibility Test",
+      headline: ["How do you", "really connect?"],
+      sub: "Three quick questions. We read the signal between them, then hand you a thread worth sharing.",
+      cta: "Begin",
+    },
+    questions: [
+      {
+        id: "energy",
+        prompt: "A room full of strangers. What pulls you in?",
+        kind: "single",
+        helper: "Pick the one that fits",
+        options: [
+          { id: "ideas", label: "A conversation about ideas", hint: "Depth over small talk" },
+          { id: "people", label: "The most interesting person", hint: "One real connection" },
+          { id: "energy", label: "Wherever the energy is", hint: "You read the room" },
+          { id: "quiet", label: "A quieter corner to observe", hint: "Warm up, then engage" },
+        ],
+      },
+      {
+        id: "values",
+        prompt: "What do you want people to feel after meeting you?",
+        kind: "multi",
+        helper: "Pick all that apply",
+        options: [
+          { id: "understood", label: "Understood" },
+          { id: "inspired", label: "Inspired" },
+          { id: "challenged", label: "Challenged" },
+          { id: "at-ease", label: "At ease" },
+          { id: "curious", label: "Curious to know more" },
+        ],
+      },
+      {
+        id: "follow-up",
+        prompt: "You met someone great. What happens next?",
+        kind: "single",
+        helper: "Pick the one that fits",
+        options: [
+          { id: "message", label: "A thoughtful message that night", hint: "Strike while it's warm" },
+          { id: "coffee", label: "You propose a coffee", hint: "Take it off the clock" },
+          { id: "intro", label: "You introduce them to someone", hint: "Connector instinct" },
+          { id: "orbit", label: "You keep them in your orbit", hint: "Slow burn" },
+        ],
+      },
+    ],
+    loaderPhrases: [
+      "Reading the signal between your answers…",
+      "Mapping your values…",
+      "Finding your connection style…",
+      "Weaving your thread…",
+    ],
+    result: {
+      archetype: "The Weaver",
+      tagline: "You turn strangers into a network that holds.",
+      values: ["Depth", "Curiosity", "Generosity"],
+      stats: [
+        { label: "Depth", value: 88 },
+        { label: "Curiosity", value: 76 },
+        { label: "Initiative", value: 64 },
+      ],
+      connectionStyle: "One real conversation at a time",
+      matchedWith: ["Catalysts", "Anchors"],
+      shareUrl: "weft.app/c/AB12CD",
+    },
+  },
 } as const;
 
 export type Content = typeof content;
