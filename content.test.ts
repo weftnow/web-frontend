@@ -41,3 +41,22 @@ test("uses the approved hero message", () => {
     "Weft matches attendees on their goals, expertise, and values, not small talk. Finding the right people becomes the best part of the night.",
   );
 });
+
+test("uses the approved featured story and outcome messages", () => {
+  expect(content.testimonials.items).toHaveLength(5);
+  expect(content.media.testimonialAvatars).toHaveLength(5);
+  expect(content.testimonials.items[0].quote).toBe(
+    "The best part was seeing people stay do not want to leave even after the event ended",
+  );
+  expect(content.testimonials.outcomes).toEqual([
+    "Turn random networking into real connection",
+    "Make your event impossible to forget",
+    "Prove your event created real value",
+  ]);
+});
+
+test("every testimonial declares its content type", () => {
+  expect(
+    content.testimonials.items.every((item) => item.type === "quote"),
+  ).toBe(true);
+});

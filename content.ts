@@ -139,6 +139,20 @@ export const content = {
         alt: "Placeholder portrait for the third testimonial",
         placeholder: true,
       },
+      {
+        src: "/placeholders/weft/customer1.jpeg",
+        width: 800,
+        height: 800,
+        alt: "Placeholder portrait for the fourth testimonial",
+        placeholder: true,
+      },
+      {
+        src: "/placeholders/weft/customer2.jpeg",
+        width: 800,
+        height: 800,
+        alt: "Placeholder portrait for the fifth testimonial",
+        placeholder: true,
+      },
     ],
     contact: {
       src: "/placeholders/weft/contact-art.png",
@@ -249,25 +263,47 @@ export const content = {
   testimonials: {
     eyebrow: "Stories",
     headline: [{ text: "The events people", muted: "remember." }],
+    outcomes: [
+      "Turn random networking into real connection",
+      "Make your event impossible to forget",
+      "Prove your event created real value",
+    ],
     // Placeholder quotes and names, replace before launch.
     items: [
       {
+        type: "quote",
         quote:
-          "As an organizer, the best part was seeing people stay after the activity ended. The matching didn’t feel forced, it just helped the right groups form naturally",
+          "The best part was seeing people stay do not want to leave even after the event ended",
         name: "Placeholder Name",
         title: "Head of Events, Placeholder Co.",
       },
       {
+        type: "quote",
         quote:
           "Weft did in one evening what our community usually takes six months of Slack to do.",
         name: "Placeholder Name",
         title: "Community Lead, Placeholder Co.",
       },
       {
+        type: "quote",
         quote:
           "The reveal moment got a genuine gasp. I have never seen a networking session do that.",
         name: "Placeholder Name",
         title: "Founder, Placeholder Co.",
+      },
+      {
+        type: "quote",
+        quote:
+          "People left with conversations they were still talking about the next day.",
+        name: "Placeholder Name",
+        title: "Program Director, Placeholder Co.",
+      },
+      {
+        type: "quote",
+        quote:
+          "It made a big room feel intentional from the very first introduction.",
+        name: "Placeholder Name",
+        title: "Experience Lead, Placeholder Co.",
       },
     ],
   },
@@ -307,6 +343,36 @@ export const content = {
     eyebrow: "Let's talk",
     headline: [{ text: "Make your event the one", muted: "they don't forget." }],
     body: "Tell us about your event. We'll show you the room it could be.",
+    links: [
+      {
+        label: "WhatsApp",
+        value: "+57 300 123 4567",
+        href: "https://wa.me/573001234567",
+        mark: "WA",
+        external: true,
+      },
+      {
+        label: "Email",
+        value: "hello@weftnow.com",
+        href: "mailto:hello@weftnow.com",
+        mark: "@",
+        external: false,
+      },
+      {
+        label: "Instagram",
+        value: "@_weftnow",
+        href: "https://www.instagram.com/_weftnow/",
+        mark: "IG",
+        external: true,
+      },
+      {
+        label: "LinkedIn",
+        value: "Weft",
+        href: "https://www.linkedin.com/company/weftnow/",
+        mark: "in",
+        external: true,
+      },
+    ],
     fields: {
       name: "Your name",
       email: "Work email",
